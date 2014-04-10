@@ -4,4 +4,6 @@ class Answer < ActiveRecord::Base
   belongs_to :category
   has_many :favorites, as: :favoritable
   has_many :kudos, as: :kudosible
+
+  validates :content, presence: true
 end
