@@ -52,10 +52,23 @@ group :test do
   gem 'database_cleaner'
 end
 
+
+
 group :development, :test do
   gem 'rspec-rails'
   gem 'pry'
   gem 'dotenv-rails'
+end
+
+  gem 'better_errors'
+
+group :development do
+
+  gem 'binding_of_caller'
+  gem 'sextant'
+  gem 'rails_db_info'
+  gem 'quiet_assets'
+  gem 'thin'
 end
 
 gem "omniauth-github"
