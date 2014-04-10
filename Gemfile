@@ -59,7 +59,8 @@ group :development, :test do
 end
 
 gem "omniauth-github"
+gem 'foundation-rails'
 
 # This makes Heroku happy:
 gem 'rails_12factor', group: :production
-ruby "2.1.1"
+ruby "1.9.3"
