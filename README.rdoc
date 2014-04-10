@@ -7,10 +7,10 @@
 - Add these to your ~.bash_profile file:
      export GITHUB_KEY="Shhhhh...Secret"
      export GITHUB_SECRET="Shhhhh...Secret"
-- Run: 
+- Run:
     $bundle
     $rake db:setup
- 
+
 We are located on Heroku at:
 
 http://www.techinterview.tips/
@@ -18,9 +18,9 @@ http://www.techinterview.tips/
 We are located on Trello at:
 
 https://trello.com/b/OyaXdgnX/www-techinterview-tips
-  
+
 === Team Members:
 - Jackie Johnston
--
--
--
+- Drew Parker
+- Germain Boue
+- Mason O'neal
