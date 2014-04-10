@@ -5,4 +5,7 @@ class Answer < ActiveRecord::Base
   has_many :favorites, as: :favoritable
   has_many :kudos, as: :kudosible
   has_many :comments, as: :commentable
+
+  validates :content, presence: true
+
 end
