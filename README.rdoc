@@ -1,28 +1,26 @@
-== README
+== Technical Interview Tips
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+=== Setup:
+- Ruby version: 2.1.1
+- Rails version: 4.0.3
+- Add config/database.yml file for postgres
+- Add these to your ~.bash_profile file:
+     export GITHUB_KEY="Shhhhh...Secret"
+     export GITHUB_SECRET="Shhhhh...Secret"
+- Run: 
+    $bundle
+    $rake db:setup
+ 
+We are located on Heroku at:
 
-Things you may want to cover:
+http://www.techinterview.tips/
 
-* Ruby version
+We are located on Trello at:
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+https://trello.com/b/OyaXdgnX/www-techinterview-tips
+  
+=== Team Members:
+- Jackie Johnston
+-
+-
+-
