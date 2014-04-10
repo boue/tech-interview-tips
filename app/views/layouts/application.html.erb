@@ -1,26 +1,70 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>TechInterviewTips</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-<div id="user_nav">
-  <% if current_user %>
-    Signed in as <%= current_user.name %>!
-    <%= link_to "Sign out", signout_path %>
-  <% else %>
-    <%= link_to "Sign in with GitHub", "/auth/github"%>
-  <% end %>
-</div>
-<!-- <div class="notice"><%= notice %></div>
-<div class="alert"><%= alert %></div> -->
-<% flash.each do |name, msg| %>
-  <%= content_tag :div, msg, id: "flash_#{name}" %>
-<% end %>
-<%= yield %>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-</body>
+    <title><%= content_for?(:title) ? yield(:title) : "Tech Interview Tips" %></title>
+
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "vendor/modernizr" %>
+    <%= csrf_meta_tags %>
+  </head>
+
+  <body>
+  <div class="contain-to-grid fixed">
+    <nav class="top-bar" data-topbar>
+      <ul class="title-area">
+        <li class="name">
+          <h1><%= link_to "Tech Interview Tips", root_path %></h1>
+        </li>
+        <!-- <li class="toggle-topbar menu-icon"><a href="#">Menu</a></li> -->
+      </ul>
+
+      <section class="top-bar-section">
+        <!-- Left Nav Section -->
+        <ul class="left">
+          <li class="has-form">
+            <div class="row collapse">
+              <div class="large-8 small-9 columns">
+                <input type="text" placeholder="Find Stuff">
+              </div>
+              <div class="large-4 small-3 columns">
+                <a href="#" class="alert button expand">Search</a>
+              </div>
+            </div>
+          </li>
+          <li class="has-dropdown">
+            <a href="#">Categories</a>
+            <ul class="dropdown">
+              <li><a href="#">Ruby</a></li>
+              <li><a href="#">Javascript</a></li>
+              <li><a href="#">Logic</a></li>
+              <li><a href="#">General</a></li>
+            </ul>
+          </li>
+        </ul>
+
+        <!-- Right Nav Section -->
+        <ul class="right">
+          <% if current_user %>
+            <li class="active"><%= link_to current_user.name, "#" %></li>
+            <li><%= link_to "Sign out", signout_path %></li>
+          <% else %>
+            <li><%= link_to "Sign in with GitHub", "/auth/github"%></li>
+          <% end %>
+        </ul>
+      </section>
+    </nav>
+  </div>
+  <!-- <div class="notice"><%= notice %></div>
+  <div class="alert"><%= alert %></div> -->
+  <% flash.each do |name, msg| %>
+    <%= content_tag :div, msg, id: "flash_#{name}" %>
+  <% end %>
+
+    <%= yield %>
+
+    <%= javascript_include_tag "application" %>
+  </body>
 </html>
