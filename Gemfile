@@ -43,3 +43,7 @@ end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
+# This makes Heroku happy:
+gem 'rails_12factor', group: :production
+ruby "2.1.1"
