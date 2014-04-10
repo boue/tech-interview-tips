@@ -44,7 +44,21 @@ end
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-gem 'dotenv'
+group :test do
+  gem 'shoulda-matchers'
+  gem 'factory_girl_rails'
+  gem 'capybara'
+  gem 'selenium-webdriver'
+  gem 'database_cleaner'
+end
+
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'pry'
+  gem 'dotenv-rails'
+end
+
+gem "omniauth-github"
 
 # This makes Heroku happy:
 gem 'rails_12factor', group: :production
