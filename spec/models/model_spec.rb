@@ -36,6 +36,16 @@ describe Answer do
   end
 end
 
+describe Category do
+  context "associations" do
+    it { should have_many :answers }
+  end
+
+  context "validations" do
+    it { should validate_uniqueness_of :content}
+  end
+end
+
 describe Favorite do
   context "associations" do
     it { should belong_to :user }
