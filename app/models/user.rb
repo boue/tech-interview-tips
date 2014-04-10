@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   has_many :questions
   has_many :answers
+  has_many :favorites
 
   def self.from_omniauth(auth)
     where(auth.slice("provider", "uid")).first || create_from_omniauth(auth)
