@@ -7,11 +7,17 @@
     <title><%= content_for?(:title) ? yield(:title) : "Tech Interview Tips" %></title>
 
     <%= stylesheet_link_tag    "application" %>
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
     <%= javascript_include_tag "vendor/modernizr" %>
     <%= csrf_meta_tags %>
   </head>
 
   <body>
+<!-- mobile menu -->
+
+<!-- end mobile menu -->
+
+
   <div class="contain-to-grid fixed">
     <nav class="top-bar" data-topbar>
       <ul class="title-area">
@@ -37,10 +43,11 @@
           <li class="has-dropdown">
             <a href="#">Categories</a>
             <ul class="dropdown">
-              <li><a href="#">Ruby</a></li>
-              <li><a href="#">Javascript</a></li>
-              <li><a href="#">Logic</a></li>
-              <li><a href="#">General</a></li>
+              <li><%= link_to "All Questions", questions_path %></li>
+              <% @categories = Category.all %>
+              <% @categories.each do |category| %>
+                <li><%= link_to category.content, "#" %></li>
+              <% end %>
             </ul>
           </li>
         </ul>
@@ -57,7 +64,12 @@
             </li>
             <li><%= link_to "Sign out", signout_path %></li>
           <% else %>
-            <li><%= link_to "Sign in", "/auth/github"%></li>
+            <li class="has-dropdown">
+            <a href="#">Sign in</a>
+            <ul class="dropdown">
+              <li><%= link_to "Using GitHub", "/auth/github" %></li>
+              <li><%= link_to "Using Linked-In", "/auth/linkedin" %></li>
+            </ul>
           <% end %>
         </ul>
       </section>

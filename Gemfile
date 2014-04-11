@@ -69,11 +69,13 @@ group :development do
   gem 'thin'
 end
 
-gem "omniauth-github"
+gem 'omniauth-github'
+gem 'omniauth-linkedin-oauth2'
 gem 'foundation-rails'
 gem 'friendly_id', '~> 5.0.0'
 gem 'pygments.rb'
 gem 'redcarpet'
+gem 'font-awesome-sass'
 
 # This makes Heroku happy:
 gem 'rails_12factor', group: :production
