@@ -9,13 +9,17 @@ class QuestionsController < ApplicationController
   end
 
   def create
-    p params
-    @question = Question.new params[:question]
+    @question = Question.new (question_params)
     if @question.save
       redirect_to question_path(@question)
     else
       render :new
     end
+  end
+
+  private
+  def question_params
+    params.require(:question).permit(:title, :content)
   end
 
 end

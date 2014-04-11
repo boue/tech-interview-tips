@@ -52,8 +52,6 @@ group :test do
   gem 'database_cleaner'
 end
 
-
-
 group :development, :test do
   gem 'rspec-rails'
   gem 'pry'
@@ -62,7 +60,6 @@ end
 
 
 group :development do
-
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'sextant'
@@ -76,4 +73,5 @@ gem 'foundation-rails'
 
 # This makes Heroku happy:
 gem 'rails_12factor', group: :production
+
 ruby "1.9.3"
