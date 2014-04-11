@@ -35,7 +35,7 @@
   </div>
 </div>
 
-<% @answers.each do |answer| %>
+<% @question.answers.each do |answer| %>
   <div class="row">
     <div class="small-12 large-12 columns panel">
       <p><%= markdown answer.content %></p>
@@ -48,6 +48,5 @@
     <%= render partial: "comments/new", locals: { question: @question, answer: answer } %>
     <%= render partial: "comments/show", locals: { answer: answer } %>
     </div>
-
   </div>
 <% end %>
