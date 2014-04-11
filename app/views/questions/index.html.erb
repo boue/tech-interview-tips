@@ -1,5 +1,13 @@
-<% @questions.each do |question| %>
-  <li>
-    <%= link_to question.title, question_path(question) %>
-  </li>
-<% end %>
+<% content_for :title do %>Technical Interview Questions<% end %>
+<div class="row">
+  <div class="small-12 large-12 columns panel">
+    <h1>Techncial Interview Questions</h1>
+  </div>
+</div>
+<div class="row">
+  <% @questions.each do |question| %>
+    <div class="small-12 large-12 columns panel">
+    <h4><%= link_to question.title, question_path(question) %></h4>
+    </div>
+  <% end %>
+</div>
