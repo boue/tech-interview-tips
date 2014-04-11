@@ -5,6 +5,12 @@
     <h1><%= @question.title %></h1>
     <p><%= markdown @question.content %></p>
     <hr>
+    <% if current_user %>
+      <p>
+        <i class="fa fa-thumbs-up"></i>
+        <i class="fa fa-floppy-o"></i>
+      </p>
+    <% end %>
     <% if current_user.id == @question.user.id %>
     <p class="text-right"><%= link_to "edit", edit_question_path(@question), class: "button [tiny small large]" %>
       <%= link_to "delete", question_path(@question), method: :delete, class: "button [tiny small large]" %></p>
