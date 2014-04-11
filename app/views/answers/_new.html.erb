@@ -1,5 +1,6 @@
-<%= form_for answer do |f| %>
-  <%= f.label :content %>
-  <%= f.text_area :content, placeholder: "Your answer" %>
-  <%= f.submit %>
-<% end %>
+<%= form_for Answer.new do |f| %>
+    <%= f.label :content %>
+    <%= f.text_area :content, placeholder: "Your answer" %>
+    <%= f.hidden_field :question_id, value: @question.id %>
+    <%= f.submit %>
+  <% end %>
