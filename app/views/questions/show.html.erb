@@ -45,6 +45,9 @@
         <p class="text-right">Posted by: <%= answer.user.name %><br>
       <% end %>
       <%= time_ago_in_words(answer.created_at) %> ago</p>
+    <%= render partial: "comments/new", locals: { question: @question, answer: answer } %>
+    <%= render partial: "comments/show", locals: { answer: answer } %>
     </div>
+
   </div>
 <% end %>
