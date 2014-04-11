@@ -57,7 +57,12 @@
             </li>
             <li><%= link_to "Sign out", signout_path %></li>
           <% else %>
-            <li><%= link_to "Sign in", "/auth/github"%></li>
+            <li class="has-dropdown">
+            <a href="#">Sign in</a>
+            <ul class="dropdown">
+              <li><%= link_to "Using GitHub", "/auth/github" %></li>
+              <li><%= link_to "Using Linked-In", "/auth/linkedin" %></li>
+            </ul>
           <% end %>
         </ul>
       </section>
