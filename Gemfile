@@ -73,6 +73,7 @@ end
 
 gem "omniauth-github"
 gem 'foundation-rails'
+gem 'friendly_id', '~> 5.0.0'
 
 # This makes Heroku happy:
 gem 'rails_12factor', group: :production
