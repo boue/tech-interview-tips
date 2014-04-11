@@ -13,3 +13,18 @@
     <p class="text-right"><%= time_ago_in_words(@question.created_at) %> ago</p>
   </div>
 </div>
+
+<% @answers.each do |answer| %>
+  <%= answer.content %>
+<% end %>
+
+<% if current_user %>
+  <%= form_for @answer do |f| %>
+    <%= f.label :content %>
+    <%= f.text_area :content, placeholder: "Your answer" %>
+    <%= f.hidden_field :question_id, value: @question.id %>
+    <%= f.submit %>
+  <% end %>
+<% else %>
+  <p>Please log in to answer!</p>
+<% end %>
