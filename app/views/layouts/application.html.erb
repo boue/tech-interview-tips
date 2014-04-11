@@ -37,10 +37,11 @@
           <li class="has-dropdown">
             <a href="#">Categories</a>
             <ul class="dropdown">
-              <li><a href="#">Ruby</a></li>
-              <li><a href="#">Javascript</a></li>
-              <li><a href="#">Logic</a></li>
-              <li><a href="#">General</a></li>
+              <li><%= link_to "All Questions", questions_path %></li>
+              <% @categories = Category.all %>
+              <% @categories.each do |category| %>
+                <li><%= link_to category.content, "#" %></li>
+              <% end %>
             </ul>
           </li>
         </ul>
@@ -57,7 +58,12 @@
             </li>
             <li><%= link_to "Sign out", signout_path %></li>
           <% else %>
-            <li><%= link_to "Sign in", "/auth/github"%></li>
+            <li class="has-dropdown">
+            <a href="#">Sign in</a>
+            <ul class="dropdown">
+              <li><%= link_to "Using GitHub", "/auth/github" %></li>
+              <li><%= link_to "Using Linked-In", "/auth/linkedin" %></li>
+            </ul>
           <% end %>
         </ul>
       </section>

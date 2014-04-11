@@ -19,7 +19,7 @@ class QuestionsController < ApplicationController
 
   def create
     @user = User.find(current_user.id)
-    @question = Question.new question_params
+    @question = Question.new(question_params)
     @user.questions << @question
     if @question.save
       redirect_to question_path(@question)
@@ -29,12 +29,10 @@ class QuestionsController < ApplicationController
   end
 
   def edit
-    @question = Question.find params[:id]
   end
 
   def update
-    @question = Question.find params[:id]
-    if @question.update_attributes question_params
+    if @question.update_attributes(question_params)
       redirect_to question_path(@question)
     else
       render :edit
@@ -42,8 +40,7 @@ class QuestionsController < ApplicationController
   end
 
   def destroy
-    question = Question.find params[:id]
-    question.destroy
+    @question.destroy
     redirect_to root_path
   end
 
