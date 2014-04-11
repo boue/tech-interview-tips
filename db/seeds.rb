@@ -12,3 +12,8 @@ categories.each do |category|
   Category.create(content: category)
 end
 
+questions = ["What is the difference between a symbol and string?", "What are class variables? How do you define them?", "What is restful routing?", "How can you implement caching in rails?", "What is a polymorphic association?"]
+
+questions.each do |question|
+  Question.create(title: question, content: question, views: 1, user_id: 1)
+end
