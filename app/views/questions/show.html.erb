@@ -9,7 +9,11 @@
     <p class="text-right"><%= link_to "edit", edit_question_path(@question), class: "button [tiny small large]" %>
       <%= link_to "delete", question_path(@question), method: :delete, class: "button [tiny small large]" %></p>
     <% end %>
-    <p class="text-right">Posted by: <%= link_to @question.user.name, "https://github.com/#{@question.user.name}" %></p>
-    <p class="text-right"><%= time_ago_in_words(@question.created_at) %> ago</p>
+    <% if @question.user.provider == "github" %>
+      <p class="text-right">Posted by: <%= link_to @question.user.name, "https://github.com/#{@question.user.name}" %><br>
+    <% else %>
+      <p class="text-right">Posted by: <%= @question.user.name %><br>
+    <% end %>
+    <%= time_ago_in_words(@question.created_at) %> ago</p>
   </div>
 </div>
