@@ -48,20 +48,31 @@
         <!-- Right Nav Section -->
         <ul class="right">
           <% if current_user %>
-            <li class="active"><%= link_to current_user.name, "#" %></li>
+            <li class="has-dropdown">
+              <a href="#"><%= current_user.name %></a>
+              <ul class="dropdown">
+              <li><%= link_to "Post a Question", new_question_path %></li>
+              <li></li>
+              </ul>
+            </li>
             <li><%= link_to "Sign out", signout_path %></li>
           <% else %>
-            <li><%= link_to "Sign in with GitHub", "/auth/github"%></li>
+            <li><%= link_to "Sign in", "/auth/github"%></li>
           <% end %>
         </ul>
       </section>
     </nav>
   </div>
-  <!-- <div class="notice"><%= notice %></div>
-  <div class="alert"><%= alert %></div> -->
-  <% flash.each do |name, msg| %>
-    <%= content_tag :div, msg, id: "flash_#{name}" %>
-  <% end %>
+    <!-- <div class="notice"><%= notice %></div>
+    <div class="alert"><%= alert %></div> -->
+    <% flash.each do |name, msg| %>
+    <div class="row">
+      <div data-alert class="alert-box info small-12 large-12 columns">
+      <%= content_tag :div, msg, id: "flash_#{name}" %>
+      <a href="#" class="close">&times;</a>
+      </div>
+    </div>
+    <% end %>
 
     <%= yield %>
 
