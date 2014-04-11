@@ -6,6 +6,10 @@ class QuestionsController < ApplicationController
     @questions = Question.all
   end
 
+  def index
+    @questions = Question.all
+  end
+
   def show
   end
 

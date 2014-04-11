@@ -5,6 +5,10 @@
     <h1><%= @question.title %></h1>
     <p><%= markdown @question.content %></p>
     <hr>
+    <p class="text-right">
+      <%= link_to "Edit", edit_question_path(@question), class: "button [tiny small large]" %>
+      <%= link_to "Delete", question_path(@question), method: :delete, class: "button [tiny small large]" %>
+    </p>
     <p class="text-right">Posted by: <%= link_to @question.user.name, "https://github.com/#{@question.user.name}" %></p>
     <p class="text-right"><%= time_ago_in_words(@question.created_at) %> ago</p>
   </div>
