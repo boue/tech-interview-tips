@@ -1,0 +1,6 @@
+<%= form_for Comment.new do |f| %>
+  <%= f.text_area :content, placeholder: "Your comment ... (Markdown supported)" %>
+  <%= f.hidden_field :question_id, value: @question.id %>
+  <%= f.hidden_field :answer_id, value: answer.id %>
+  <%= f.submit %>
+<% end %>
