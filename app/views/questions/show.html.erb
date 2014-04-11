@@ -1,5 +1,15 @@
-<h1><%= @question.title %></h1>
-<p><%= @question.content %></p>
+<% content_for :title do %><%= @question.title %><% end %>
 
-<%= link_to "edit", edit_question_path(@question) %>
-<%= link_to "delete", question_path(@question), method: :delete %>
+<div class="row">
+  <div class="small-12 large-12 columns panel">
+    <h1><%= @question.title %></h1>
+    <p><%= markdown @question.content %></p>
+    <hr>
+    <% if current_user.id == @question.user.id %>
+    <p class="text-right"><%= link_to "edit", edit_question_path(@question), class: "button [tiny small large]" %>
+      <%= link_to "delete", question_path(@question), method: :delete, class: "button [tiny small large]" %></p>
+    <% end %>
+    <p class="text-right">Posted by: <%= link_to @question.user.name, "https://github.com/#{@question.user.name}" %></p>
+    <p class="text-right"><%= time_ago_in_words(@question.created_at) %> ago</p>
+  </div>
+</div>

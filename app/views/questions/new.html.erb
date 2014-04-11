@@ -1,7 +1,23 @@
-<%= form_for @question do |f| %>
-  <%= f.label :title %>
-  <%= f.text_field :title %>
-  <%= f.label :content %>
-  <%= f.text_area :content, size: "60x12" %>
-  <%= f.submit %>
-<% end %>
+<% content_for :title do %>Add a technical interview question<% end %>
+<div class="row">
+  <div class="small-12 large-12 columns panel">
+    <h1>Post a Question</h1>
+     <%= form_for @question do |f| %>
+     <div class="row">
+       <div class="small-12 large-12 columns">
+          <%= f.text_field :title, placeholder: "Question Title ..." %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="small-12 large-12 columns">
+          <%= f.text_area :content, placeholder: "Question Body ... (Markdown supported)", size: "60x12" %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="small-12 large-12 columns">
+          <%= f.submit "Submit Question", class: "button" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
