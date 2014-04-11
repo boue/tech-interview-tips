@@ -60,10 +60,10 @@ group :development, :test do
   gem 'dotenv-rails'
 end
 
-  gem 'better_errors'
 
 group :development do
 
+  gem 'better_errors'
   gem 'binding_of_caller'
   gem 'sextant'
   gem 'rails_db_info'

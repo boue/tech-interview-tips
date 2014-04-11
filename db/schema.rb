@@ -31,6 +31,14 @@ ActiveRecord::Schema.define(version: 20140411001636) do
     t.datetime "updated_at"
   end
 
+  create_table "comments", force: true do |t|
+    t.string   "content"
+    t.integer  "commentable_id"
+    t.string   "commentable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "favorites", force: true do |t|
     t.integer  "user_id"
     t.integer  "favoritable_id"
