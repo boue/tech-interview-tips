@@ -12,7 +12,6 @@ class QuestionsController < ApplicationController
 
   def show
     @question = Question.friendly.find(params[:id])
-    @answer = Answer.new
     @answers = @question.answers
   end
 
