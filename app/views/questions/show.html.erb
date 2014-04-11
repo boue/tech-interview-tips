@@ -1,2 +1,11 @@
-<h1><%= @question.title %></h1>
-<p><%= @question.content %></p>
+<% content_for :title do %><%= @question.title %><% end %>
+
+<div class="row">
+  <div class="small-12 large-12 columns panel">
+    <h1><%= @question.title %></h1>
+    <p><%= markdown @question.content %></p>
+    <hr>
+    <p class="text-right">Posted by: <%= link_to @question.user.name, "https://github.com/#{@question.user.name}" %></p>
+    <p class="text-right"><%= time_ago_in_words(@question.created_at) %> ago</p>
+  </div>
+</div>

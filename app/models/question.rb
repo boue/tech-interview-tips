@@ -15,7 +15,7 @@ class Question < ActiveRecord::Base
   validates_presence_of :title, :slug, :content
 
   def should_generate_new_friendly_id?
-    headline_changed?
+    title_changed?
   end
 
 end
