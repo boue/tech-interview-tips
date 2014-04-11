@@ -6,12 +6,7 @@ class QuestionsController < ApplicationController
     @questions = Question.all
   end
 
-  def index
-    @questions = Question.all
-  end
-
   def show
-    @question = Question.friendly.find(params[:id])
     @answers = @question.answers
   end
 

@@ -24,17 +24,31 @@
   </div>
 </div>
 
-<% @answers.each do |answer| %>
-  <%= answer.content %><br>
-<% end %>
-
+<div class="row">
+  <div class="small-12 large-12 columns panel">
 <% if current_user %>
+<h3>Answer Question</h3>
   <%= form_for Answer.new do |f| %>
-    <%= f.label :content %>
-    <%= f.text_area :content, placeholder: "Your answer" %>
+    <%= f.text_area :content, placeholder: "Your answer ... (Markdown supported)" %>
     <%= f.hidden_field :question_id, value: @question.id %>
     <%= f.submit %>
   <% end %>
 <% else %>
-  <p>Please log in to answer!</p>
+  <h3>Please log in to answer!</h3>
+<% end %>
+  </div>
+</div>
+
+<% @answers.each do |answer| %>
+  <div class="row">
+    <div class="small-12 large-12 columns panel">
+      <p><%= markdown answer.content %></p>
+      <% if answer.user.provider == "github" %>
+        <p class="text-right">Posted by: <%= link_to answer.user.name, "https://github.com/#{answer.user.name}" %><br>
+      <% else %>
+        <p class="text-right">Posted by: <%= answer.user.name %><br>
+      <% end %>
+      <%= time_ago_in_words(answer.created_at) %> ago</p>
+    </div>
+  </div>
 <% end %>
