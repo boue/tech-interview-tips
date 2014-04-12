@@ -14,13 +14,6 @@
   </div>
 </div>
 
-<%= form_tag questions_path, :method => "get" do %>
-  <p>
-    <%= text_field_tag :search, params[:search] %>
-    <%= submit_tag "Search", :title => nil %>
-  </p>
-  <% end %>
-
 <div class="row">
 
   <% @questions.each do |question| %>

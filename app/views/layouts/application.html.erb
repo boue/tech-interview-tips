@@ -11,7 +11,6 @@
     <%= javascript_include_tag "vendor/modernizr" %>
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag    "techtips" %>
-
   </head>
 
   <body>
@@ -34,12 +33,14 @@
         <ul class="left">
           <li class="has-form">
             <div class="row collapse">
-              <div class="large-8 small-9 columns">
-                <input type="text" placeholder="Find Stuff">
-              </div>
-              <div class="large-4 small-3 columns">
-                <a href="#" class="alert button expand">Search</a>
-              </div>
+              <form action="/questions" method="get">
+                <div class="large-8 small-9 columns" "margin-right:0;">
+                  <%= text_field_tag :search, params[:search], placeholder: "Find Stuff" %>
+                </div>
+                <div class="large-4 small-3 columns" style="margin-left:0;">
+                  <%= submit_tag "Search", :name => nil, class: "alert button expand" %>
+                </div>
+              </form>
             </div>
           </li>
           <li class="has-dropdown">
