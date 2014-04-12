@@ -14,7 +14,6 @@
       <hr>
       <h4><%= link_to question.title, question_path(question) %></h4>
       <span class="label"><%= question.answers.count %> answers</span> <span class="label"><%= question.kudos.count %> kudos</span>
-        <%= link_to "delete", question_path(@question), method: :delete, class: "button [tiny small large]" %>
     <% end %>
     <%= will_paginate @questions, renderer: FoundationPagination::Rails %>
   </div>
