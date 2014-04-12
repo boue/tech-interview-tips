@@ -1,3 +1,5 @@
 <% answer.comments.each do |comment| %>
-  <%= comment.content %><br>
+  <%= comment.content %>
+  <%= link_to "delete", comment_path(comment), method: :delete %>
+  <br>
 <% end %>
