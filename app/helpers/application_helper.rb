@@ -25,4 +25,11 @@ module ApplicationHelper
     }
     Redcarpet::Markdown.new(renderer, options).render(text).html_safe
   end
+
+  # Returns the Gravatar (http://gravatar.com/) for the given user.
+  def gravatar_for(user)
+    gravatar_id = Digest::MD5::hexdigest(user.email.downcase)
+    gravatar_url = "https://secure.gravatar.com/avatar/#{gravatar_id}"
+    image_tag(gravatar_url, alt: user.email, class: "gravatar")
+  end
 end

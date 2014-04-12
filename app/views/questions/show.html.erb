@@ -23,10 +23,12 @@
         <%= link_to "delete", question_path(@question), method: :delete, class: "button [tiny small large]" %></p>
       <% end %>
     <% end %>
+
+    <div class="gravatar-body"><%= gravatar_for(@question.user) %></div>
     <% if @question.user.provider == "github" %>
       <p class="text-right">Posted by: <%= link_to @question.user.name, "https://github.com/#{@question.user.name}" %><br>
     <% else %>
-      <p class="text-right">Posted by: <%= @question.user.name %><br>
+      <p class="text-right">Posted by: <%= link_to @question.user.name, @question.user.url %><br>
     <% end %>
     <%= time_ago_in_words(@question.created_at) %> ago</p>
   </div>
@@ -47,6 +49,7 @@
   <div class="row">
     <div class="small-12 large-12 columns panel">
       <p><%= markdown answer.content %></p>
+      <div class="gravatar-body"><%= gravatar_for(answer.user) %></div>
       <% if answer.user.provider == "github" %>
         <p class="text-right">Posted by: <%= link_to answer.user.name, "https://github.com/#{answer.user.name}" %><br>
       <% else %>
