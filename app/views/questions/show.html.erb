@@ -20,7 +20,10 @@
             <% end %>
           <%= @question.kudos.count %>
         <% end %>
-        <i class="fa fa-floppy-o"></i>
+
+        <%= link_to favorites_path(question_id: @question.id), class: "fa fa-floppy-o", method: :put, id: "save-question", remote: true do %>
+        <% end %>
+          
         <% end %>
       </p>
     <% end %>
