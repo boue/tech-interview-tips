@@ -11,17 +11,10 @@
 
     <h1>Technical Interview Questions</h1>
     <%= link_to "Post a Question", new_question_path, class: "button [tiny small large]" %>
-  </div>
-</div>
-
-<div class="row">
-
-  <% @questions.each do |question| %>
-    <div class="small-12 large-12 columns panel">
-    <h4><%= link_to question.title, question_path(question) %></h4>
-    </div>
-  <% end %>
-  <div class="small-12 large-12 columns panel">
-    <%= will_paginate @questions %>
+    <% @questions.each do |question| %>
+      <hr>
+      <h4><%= link_to question.title, question_path(question) %></h4>
+    <% end %>
+    <%= will_paginate @questions, renderer: FoundationPagination::Rails %>
   </div>
 </div>
