@@ -1,7 +1,7 @@
 == Technical Interview Tips
 
 === Setup:
-- Ruby version: 2.1.1
+- Ruby version: 1.9.3
 - Rails version: 4.0.3
 - Add config/database.yml file for postgres
 - Add these to your ~.bash_profile file:
