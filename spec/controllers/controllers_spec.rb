@@ -2,6 +2,9 @@ require 'spec_helper'
 
 describe QuestionsController do
 
+  # where to put skip_action_callback in tests? to skip before_actions
+
+  #below test not passing because of "before_action" statement
   context "#show" do
     let(:question) { FactoryGirl.create :question }
     it "is successful" do
@@ -9,12 +12,14 @@ describe QuestionsController do
       expect(response).to render_template(:show)
     end
 
+  #below test not passing
     it "assigns @question to the Question found by id" do
       get :show, id: question.id
       expect(assigns(:question)).to eq question
     end
   end
 
+  #below test not passing because of "before_action" statement
   context "#new" do
     it "is successful" do
       get :new

@@ -42,9 +42,6 @@ describe Comment do
 end
 
 
-
-
-
 describe Category do
   context "associations" do
     it { should have_many :answers }
