@@ -5,6 +5,8 @@ class QuestionsController < ApplicationController
 
   def index
     @questions = Question.all
+    @questions = Question.search(params[:search])
+
   end
 
   def show
@@ -64,7 +66,7 @@ class QuestionsController < ApplicationController
 
     def check_current_user
       unless current_user
-        redirect_to root_url, flash: { notice: "Please sign in first" } 
+        redirect_to root_url, flash: { notice: "Please sign in first" }
       end
     end
 end

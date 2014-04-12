@@ -5,7 +5,16 @@
     <%= link_to "Post a Question", new_question_path, class: "button [tiny small large]" %>
   </div>
 </div>
+
+<%= form_tag questions_path, :method => "get" do %>
+  <p>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search", :title => nil %>
+  </p>
+  <% end %>
+
 <div class="row">
+
   <% @questions.each do |question| %>
     <div class="small-12 large-12 columns panel">
     <h4><%= link_to question.title, question_path(question) %></h4>
