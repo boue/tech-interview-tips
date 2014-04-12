@@ -1,3 +1,12 @@
-<% answer.comments.each do |comment| %>
-  <%= comment.content %><br>
+<% answer.comments.each do |comment| %> 
+  <hr>
+  <p><%= markdown comment.content %></p>
+  <% user = User.find(comment.commentable.user_id) %>
+  <div class="gravatar-body"><%= gravatar_for(user) %></div>
+  <% if user.provider == "github" %>
+    <p class="text-right">Posted by: <%= link_to user.name, "https://github.com/#{user.name}" %><br>
+  <% else %>
+    <p class="text-right">Posted by: <%= user.name %><br>
+  <% end %>
+  <%= time_ago_in_words(comment.created_at) %> ago</p>
 <% end %>

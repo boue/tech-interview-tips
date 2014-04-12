@@ -55,6 +55,7 @@
         <!-- Right Nav Section -->
         <ul class="right">
           <% if current_user %>
+            <li class="gravatar-nav"><%= gravatar_for(current_user) %></li>
             <li class="has-dropdown">
               <a href="#"><%= current_user.name %></a>
               <ul class="dropdown">
