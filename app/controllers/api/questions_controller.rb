@@ -5,6 +5,7 @@ class Api::QuestionsController < ApplicationController
     @questions = Question.all
     render json: @questions
   end
+    # serializer: QuestionSerializer
 
 # chrome extension json viewer
 end
