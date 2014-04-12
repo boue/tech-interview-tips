@@ -7,9 +7,9 @@
   <% user = User.find(comment.commentable.user_id) %>
   <div class="gravatar-body"><%= gravatar_for(user) %></div>
   <% if user.provider == "github" %>
-    <p class="text-right">Posted by: <%= link_to user.name, "https://github.com/#{user.name}" %><br>
+    <p class="text-right">Posted by: <i class="fa fa-github-square"></i> <%= link_to user.name, "https://github.com/#{user.name}" %><br>
   <% else %>
-    <p class="text-right">Posted by: <%= user.name %><br>
+    <p class="text-right"><i class="fa fa-linkedin-square"></i> Posted by: <%= link_to user.name, user.url %><br>
   <% end %>
   <%= time_ago_in_words(comment.created_at) %> ago</p>
 <% end %>

@@ -1,17 +1,27 @@
-
+<style>
+  h5 {
+    margin: 0;
+    padding: 0;
+    margin-top: 40px;
+  }
+  h1 {
+    margin-top: 0;
+    padding-top: 0;
+    font-family: 'Candal', sans-serif;
+  }
+</style>
 
 <div class="small-12 large-12 img-container">
+<%= render partial: "layouts/alerts" %>
   <div class="row">
     <div class="small-6 large-6 columns">
-      <h1>Welcome to<br>
-      Tech Interview Tips</h1>
-      <p>This is the place to learn new ways to answer technical interview questions, and the place to share your knowledge with others.</p>
-      <p>
-      <%= link_to "View Questions", questions_path, class: "button [tiny small large]" %>
-      <%= link_to "Post a Question", new_question_path, class: "button [tiny small large]" %><br>
-      <%= link_to "Sign in with GitHub", "/auth/github", class: "button [tiny small large]" %>
-      <%= link_to "Sign in with Linked-in", "/auth/linkedin", class: "button [tiny small large]" %>
-        </p>
+    <h5>Welcome to</h5>
+    <h1>Tech Interview Tips</h1>
+    <p>This is the place to learn ways to answer technical interview questions, and the place to share your knowledge with others.</p>
+    <p>
+    <%= link_to "View Questions", questions_path, class: "button [tiny small large]" %><br>
+    <%= link_to "Post a Question", new_question_path, class: "button [tiny small large]" %>
+      </p>
     </div>
   </div>
 </div>
