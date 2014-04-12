@@ -55,3 +55,4 @@ ehthumbs.db
 Thumbs.db
 
 db/schema.rb
+db/seeds.rb
