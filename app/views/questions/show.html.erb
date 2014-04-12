@@ -11,9 +11,11 @@
         <i class="fa fa-floppy-o"></i>
       </p>
     <% end %>
-    <% if current_user.id == @question.user.id %>
-    <p class="text-right"><%= link_to "edit", edit_question_path(@question), class: "button [tiny small large]" %>
-      <%= link_to "delete", question_path(@question), method: :delete, class: "button [tiny small large]" %></p>
+    <% if current_user %>
+      <% if current_user.id == @question.user.id %>
+      <p class="text-right"><%= link_to "edit", edit_question_path(@question), class: "button [tiny small large]" %>
+        <%= link_to "delete", question_path(@question), method: :delete, class: "button [tiny small large]" %></p>
+      <% end %>
     <% end %>
     <% if @question.user.provider == "github" %>
       <p class="text-right">Posted by: <%= link_to @question.user.name, "https://github.com/#{@question.user.name}" %><br>

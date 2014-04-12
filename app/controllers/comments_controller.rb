@@ -12,6 +12,7 @@ class CommentsController < ApplicationController
     question = Question.find(params[:comment][:question_id])
     answer = Answer.find(params[:comment][:answer_id])
     comment = Comment.new comment_params
+    comment.user_id = current_user.id
     answer.comments << comment
     if comment.save
       redirect_to question_path(question)
@@ -27,7 +28,9 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-
+    comment = Comment.find params[:id]
+    comment.destroy
+    redirect_to question_path(comment.commentable.question_id)
   end
 
   private
