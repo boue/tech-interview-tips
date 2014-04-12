@@ -1,6 +1,7 @@
 class QuestionsController < ApplicationController
   before_action :set_question, only: [:edit, :update, :destroy]
   before_action :set_question_redirect, only: [:show]
+  before_action :check_current_user, only: [:new, :edit, :update, :destroy ]
 
   def index
     @questions = Question.all
@@ -61,4 +62,9 @@ class QuestionsController < ApplicationController
       @question = Question.friendly.find(params[:id])
     end
 
+    def check_current_user
+      unless current_user
+        redirect_to root_url, flash: { notice: "Please sign in first" } 
+      end
+    end
 end
