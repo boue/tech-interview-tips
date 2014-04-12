@@ -1,6 +1,9 @@
 <% answer.comments.each do |comment| %> 
   <hr>
   <p><%= markdown comment.content %></p>
+  <% if current_user.id == comment.user_id %>
+    <p><%= link_to "delete", comment_path(comment), method: :delete %></p>
+  <% end %>
   <% user = User.find(comment.commentable.user_id) %>
   <div class="gravatar-body"><%= gravatar_for(user) %></div>
   <% if user.provider == "github" %>

@@ -36,6 +36,20 @@ describe Answer do
   end
 end
 
+describe Comment do
+  context "associations" do
+    it { should have_many :comments }
+  end
+
+  context "validations" do
+    it { should validate_presence_of :content }
+  end
+end
+
+
+
+
+
 describe Category do
   context "associations" do
     it { should have_many :answers }

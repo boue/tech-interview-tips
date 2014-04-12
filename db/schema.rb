@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 20140411223456) do
     t.string   "commentable_type"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
   create_table "favorites", force: true do |t|
@@ -71,6 +72,7 @@ ActiveRecord::Schema.define(version: 20140411223456) do
   create_table "questions", force: true do |t|
     t.string   "title"
     t.text     "content"
+    t.integer  "category_id"
     t.integer  "user_id"
     t.integer  "views"
     t.datetime "created_at"
