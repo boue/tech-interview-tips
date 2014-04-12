@@ -9,6 +9,7 @@ class Question < ActiveRecord::Base
   validates :title, presence: true
   validates :content, presence: true
 
+
   default_scope -> { order('created_at DESC') }
 
   extend FriendlyId
@@ -21,7 +22,7 @@ class Question < ActiveRecord::Base
 
   def self.search(search)
     if search
-      find(:all, :conditions => ['title LIKE ?', "%#{search}%"])
+      find(:all, :conditions => ["title ilike ? ", "%#{search}%"])
     else
       find(:all)
     end

@@ -4,7 +4,7 @@ class QuestionsController < ApplicationController
   before_action :check_current_user, only: [:new, :edit, :update, :destroy ]
 
   def index
-    @questions = Question.all
+    # @questionsall = Question.all
     @questions = Question.search(params[:search])
 
   end
