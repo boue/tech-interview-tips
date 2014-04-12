@@ -45,7 +45,7 @@ class QuestionsController < ApplicationController
   private
 
     def question_params
-      params.require(:question).permit(:title, :content)
+      params.require(:question).permit(:title)
     end
 
     # Use callbacks to share common setup or constraints between actions.
