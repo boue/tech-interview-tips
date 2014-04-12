@@ -77,6 +77,7 @@ gem 'pygments.rb'
 gem 'redcarpet'
 gem 'font-awesome-sass'
 gem 'will_paginate', '~> 3.0'
+gem 'will_paginate-foundation'
 
 # This makes Heroku happy:
 gem 'rails_12factor', group: :production
