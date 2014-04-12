@@ -72,6 +72,7 @@ ActiveRecord::Schema.define(version: 20140412004639) do
   create_table "questions", force: true do |t|
     t.string   "title"
     t.text     "content"
+    t.integer  "category_id"
     t.integer  "user_id"
     t.integer  "views"
     t.datetime "created_at"
