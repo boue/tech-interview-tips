@@ -3,6 +3,7 @@ TechInterviewTips::Application.routes.draw do
   resources :questions
   resources :answers
   resources :comments
+  resources :kudos, only: [:create]
   # These are for OmniAuth:
   get 'auth/:provider/callback', to: 'sessions#create'
   get 'auth/failure', to: redirect('/')
