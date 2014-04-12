@@ -12,6 +12,7 @@ class CommentsController < ApplicationController
     question = Question.find(params[:comment][:question_id])
     answer = Answer.find(params[:comment][:answer_id])
     comment = Comment.new comment_params
+    comment.user_id = current_user.id
     answer.comments << comment
     if comment.save
       redirect_to question_path(question)
