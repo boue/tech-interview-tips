@@ -1,6 +1,7 @@
 class Question < ActiveRecord::Base
   has_many :answers
   has_many :favorites, as: :favoritable
+  has_many :kudos, as: :kudosible
   has_many :comments, as: :commentable
 
   belongs_to :user
@@ -9,7 +10,7 @@ class Question < ActiveRecord::Base
   validates :content, presence: true
 
   default_scope -> { order('created_at DESC') }
-  
+
   extend FriendlyId
   friendly_id :title, use: [:slugged, :history]
   validates_presence_of :title, :slug, :content
