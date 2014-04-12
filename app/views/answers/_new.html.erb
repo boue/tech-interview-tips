@@ -1,14 +1,5 @@
-<div class="row">
-  <div class="small-12 large-12 columns panel">
-<% if current_user %>
-<h3>Answer Question</h3>
-  <%= form_for Answer.new do |f| %>
+<%= form_for Answer.new do |f| %>
     <%= f.text_area :content, placeholder: "Your answer ... (Markdown supported)" %>
     <%= f.hidden_field :question_id, value: @question.id %>
     <%= f.submit %>
   <% end %>
-<% else %>
-  <h3>Please log in to answer!</h3>
-<% end %>
-  </div>
-</div>
