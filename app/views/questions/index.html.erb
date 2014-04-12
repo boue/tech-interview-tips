@@ -8,12 +8,12 @@
 </style>
 <div class="row">
   <div class="small-12 large-12 columns panel">
-
     <h1>Technical Interview Questions</h1>
     <%= link_to "Post a Question", new_question_path, class: "button [tiny small large]" %>
     <% @questions.each do |question| %>
       <hr>
       <h4><%= link_to question.title, question_path(question) %></h4>
+      <span class="label"><%= question.answers.count %> answers</span> <span class="label"><%= question.kudos.count %> kudos</span>
     <% end %>
     <%= will_paginate @questions, renderer: FoundationPagination::Rails %>
   </div>
