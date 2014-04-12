@@ -1,0 +1,9 @@
+<% answer.comments.each do |comment| %>
+  <%= comment.content %>
+  <% if current_user %>
+    <% if current_user.id == comment.user_id %>
+      <%= link_to "delete", comment_path(comment), method: :delete %>
+    <% end %>
+  <% end %>
+  <br>
+<% end %>

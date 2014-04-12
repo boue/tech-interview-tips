@@ -1,0 +1,13 @@
+<% @answers.each do |answer| %>
+  <div class="row">
+    <div class="small-12 large-12 columns panel">
+      <p><%= markdown answer.content %></p>
+      <% if answer.user.provider == "github" %>
+        <p class="text-right">Posted by: <%= link_to answer.user.name, "https://github.com/#{answer.user.name}" %><br>
+      <% else %>
+        <p class="text-right">Posted by: <%= answer.user.name %><br>
+      <% end %>
+      <%= time_ago_in_words(answer.created_at) %> ago</p>
+    </div>
+  </div>
+<% end %>

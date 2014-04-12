@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   has_many :questions
   has_many :answers
+  has_many :comments
   has_many :favorites
   has_many :kudos
 
@@ -13,7 +14,9 @@ class User < ActiveRecord::Base
       user.provider = auth["provider"]
       user.uid = auth["uid"]
       user.name = auth["info"]["nickname"]
-      # user.email = auth["email"]
+      # require "pry"; binding.pry
+      user.email = auth["info"]["email"]
+      user.url = auth["info"]["urls"]["public_profile"]
     end
   end
 end

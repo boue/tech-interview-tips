@@ -19,11 +19,24 @@ class AnswersController < ApplicationController
   end
 
   def edit
-
+    @answer = Answer.find params[:id]
   end
 
   def update
+    @answer = Answer.find params[:id]
+    @question = Question.find(params[:answer][:question_id])
+      if @answer.update_attributes answer_params
+        redirect_to question_path(@question)
+      else
+        render :edit
+      end
+  end
 
+  def destroy
+    answer = Answer.find params[:id]
+    question = Question.find(answer.question_id)
+    answer.destroy
+    redirect_to question_path(question)
   end
 
   private
