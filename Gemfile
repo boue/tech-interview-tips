@@ -76,6 +76,7 @@ gem 'friendly_id', '~> 5.0.0'
 gem 'pygments.rb'
 gem 'redcarpet'
 gem 'font-awesome-sass'
+gem 'will_paginate', '~> 3.0'
 
 # This makes Heroku happy:
 gem 'rails_12factor', group: :production
