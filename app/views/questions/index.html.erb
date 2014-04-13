@@ -5,6 +5,10 @@
     padding-top: 0;
     font-family: 'Candal', sans-serif;
   }
+  .label>a {
+    color: white;
+    text-decoration: none;
+  }
 </style>
 <div class="row">
   <div class="small-12 large-12 columns panel">
@@ -13,8 +17,10 @@
     <% @questions.each do |question| %>
       <hr>
       <h4><%= link_to question.title, question_path(question) %></h4>
-      <span class="label"><%= question.answers.count %> answers</span> <span class="label"><%= question.kudos.count %> kudos</span> <span class="label"><%= question.favorites.count %> saves</span>
-
+      <span class="label"><%= question.answers.count %> answers</span> <span class="label"><%= question.kudos.count %> kudos</span> <span class="label"><%= question.favorites.count %> saves</span><br>
+      <% unless question.tag_list.count < 1 %>
+        <span class="label"><%= raw question.tag_list.map { |t| link_to t, tag_path(t) }.join('</span> <span class="label">') %></span>
+      <% end %>
     <% end %>
     <%= will_paginate @questions, renderer: FoundationPagination::Rails %>
   </div>

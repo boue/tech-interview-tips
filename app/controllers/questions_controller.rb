@@ -3,9 +3,18 @@ class QuestionsController < ApplicationController
   before_action :set_question_redirect, only: [:show]
   before_action :check_current_user, only: [:new, :edit, :update, :destroy ]
 
-  def index
-    @questions = Question.paginate(:page => params[:page], :per_page => 10)
-    @questions = @questions.search(params[:search])
+  def index 
+    if params[:tag]
+      @questions = Question.all
+      @questions = @questions.tagged_with(params[:tag])
+      @questions = @questions.paginate(:page => params[:page], :per_page => 10)
+    elsif params[:search]  
+      @questions = Question.paginate(:page => params[:page], :per_page => 10)
+      @questions = @questions.search(params[:search])
+    else
+      @questions = Question.all
+      @questions = @questions.paginate(:page => params[:page], :per_page => 10)
+    end
   end
 
   def show
@@ -45,7 +54,7 @@ class QuestionsController < ApplicationController
   private
 
     def question_params
-      params.require(:question).permit(:title)
+      params.require(:question).permit(:title, :tag_list)
     end
 
     # Use callbacks to share common setup or constraints between actions.
