@@ -7,6 +7,8 @@ TechInterviewTips::Application.routes.draw do
   resources :favorites, only: [:create]
   resources :users, only: [:show]
 
+  get 'about', to: 'pages#about'
+
   # These are for OmniAuth:
   get 'auth/:provider/callback', to: 'sessions#create'
   get 'auth/failure', to: redirect('/')
