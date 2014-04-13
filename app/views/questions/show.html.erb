@@ -25,9 +25,7 @@
       <%= @question.favorites.count %><br><br>
       <span data-tooltip class="has-tip" title="Pageviews"><%= @question.impressionist_count %></span><br>
       <!-- <i class="fa fa-facebook-square" href="http://www.facebook.com/"></a></i> -->
-      <%= link_to "http://www.facebook.com/share.php?p[url]=[#{request.host_with_port}/questions/#{@question.title}]&title=[#{@question.title}]" do %>
-      <i class="fa fa-facebook-square"></i>
-      <% end %>
+      <%= render partial: "questions/share" %>
 
     <% else %>
 
