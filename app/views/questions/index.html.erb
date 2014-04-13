@@ -1,23 +1,20 @@
 <% content_for :title do %>Technical Interview Questions<% end %>
+<style>
+  h1 {
+    margin-top: 0;
+    padding-top: 0;
+    font-family: 'Candal', sans-serif;
+  }
+</style>
 <div class="row">
   <div class="small-12 large-12 columns panel">
     <h1>Technical Interview Questions</h1>
     <%= link_to "Post a Question", new_question_path, class: "button [tiny small large]" %>
+    <% @questions.each do |question| %>
+      <hr>
+      <h4><%= link_to question.title, question_path(question) %></h4>
+      <span class="label"><%= question.answers.count %> answers</span> <span class="label"><%= question.kudos.count %> kudos</span>
+    <% end %>
+    <%= will_paginate @questions, renderer: FoundationPagination::Rails %>
   </div>
-</div>
-
-<%= form_tag questions_path, :method => "get" do %>
-  <p>
-    <%= text_field_tag :search, params[:search] %>
-    <%= submit_tag "Search", :title => nil %>
-  </p>
-  <% end %>
-
-<div class="row">
-
-  <% @questions.each do |question| %>
-    <div class="small-12 large-12 columns panel">
-    <h4><%= link_to question.title, question_path(question) %></h4>
-    </div>
-  <% end %>
 </div>

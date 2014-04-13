@@ -4,9 +4,8 @@ class QuestionsController < ApplicationController
   before_action :check_current_user, only: [:new, :edit, :update, :destroy ]
 
   def index
-    # @questionsall = Question.all
-    @questions = Question.search(params[:search])
-
+    @questions = Question.paginate(:page => params[:page], :per_page => 10)
+    @questions = @questions.search(params[:search])
   end
 
   def show
@@ -46,7 +45,7 @@ class QuestionsController < ApplicationController
   private
 
     def question_params
-      params.require(:question).permit(:title, :content)
+      params.require(:question).permit(:title)
     end
 
     # Use callbacks to share common setup or constraints between actions.

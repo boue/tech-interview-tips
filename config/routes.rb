@@ -9,6 +9,11 @@ TechInterviewTips::Application.routes.draw do
   get 'auth/failure', to: redirect('/')
   get 'signout', to: 'sessions#destroy', as: 'signout'
 
+  namespace :api do
+    resources :questions
+    # resources :answers
+  end
+
 
 
   # The priority is based upon order of creation: first created -> highest priority.

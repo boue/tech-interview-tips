@@ -1,17 +1,18 @@
-
 <% content_for :title do %>Update Question<% end %>
+<style>
+  h1 {
+    margin-top: 0;
+    padding-top: 0;
+    font-family: 'Candal', sans-serif;
+  }
+</style>
 <div class="row">
   <div class="small-12 large-12 columns panel">
-    <h1>Post a Question</h1>
+    <h1>Update Question</h1>
      <%= form_for @question do |f| %>
      <div class="row">
        <div class="small-12 large-12 columns">
-          <%= f.text_field :title %>
-        </div>
-      </div>
-      <div class="row">
-        <div class="small-12 large-12 columns">
-          <%= f.text_area :content, size: "60x12" %>
+          <%= f.text_field :title, size: "60x12" %>
         </div>
       </div>
       <div class="row">

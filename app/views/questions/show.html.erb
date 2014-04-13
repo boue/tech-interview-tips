@@ -1,9 +1,16 @@
 <% content_for :title do %><%= @question.title %><% end %>
-
+<style>
+  h1 {
+    margin-top: 0;
+    padding-top: 0;
+    font-family: 'Candal', sans-serif;
+  }
+</style>
 <div class="row">
   <div class="small-12 large-12 columns panel">
+  <%= render partial: "layouts/alerts" %>
+    <p>
     <h1><%= @question.title %></h1>
-    <p><%= markdown @question.content %></p>
     <hr>
     <% if current_user %>
       <p>
@@ -26,9 +33,9 @@
 
     <div class="gravatar-body"><%= gravatar_for(@question.user) %></div>
     <% if @question.user.provider == "github" %>
-      <p class="text-right">Posted by: <%= link_to @question.user.name, "https://github.com/#{@question.user.name}" %><br>
+      <p class="text-right">Posted by: <i class="fa fa-github-square"></i> <%= link_to @question.user.name, "https://github.com/#{@question.user.name}" %><br>
     <% else %>
-      <p class="text-right">Posted by: <%= link_to @question.user.name, @question.user.url %><br>
+      <p class="text-right">Posted by: <i class="fa fa-linkedin-square"></i> <%= link_to @question.user.name, @question.user.url %><br>
     <% end %>
     <%= time_ago_in_words(@question.created_at) %> ago</p>
   </div>
@@ -51,12 +58,14 @@
       <p><%= markdown answer.content %></p>
       <div class="gravatar-body"><%= gravatar_for(answer.user) %></div>
       <% if answer.user.provider == "github" %>
-        <p class="text-right">Posted by: <%= link_to answer.user.name, "https://github.com/#{answer.user.name}" %><br>
+        <p class="text-right">Posted by: <i class="fa fa-github-square"></i> <%= link_to answer.user.name, "https://github.com/#{answer.user.name}" %><br>
       <% else %>
-        <p class="text-right">Posted by: <%= answer.user.name %><br>
+        <p class="text-right">Posted by: <i class="fa fa-linkedin-square"></i> <%= link_to answer.user.name, answer.user.url %><br>
       <% end %>
       <%= time_ago_in_words(answer.created_at) %> ago</p>
+      <% if current_user %>
     <%= render partial: "comments/new", locals: { question: @question, answer: answer } %>
+      <% end %>
     <%= render partial: "comments/show", locals: { answer: answer } %>
     </div>
   </div>

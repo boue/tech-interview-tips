@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'active_model_serializers'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.3'
 
@@ -25,7 +26,7 @@ gem 'jquery-rails'
 gem 'turbolinks'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 1.2'
+# gem 'jbuilder', '~> 1.2'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
@@ -76,6 +77,8 @@ gem 'friendly_id', '~> 5.0.0'
 gem 'pygments.rb'
 gem 'redcarpet'
 gem 'font-awesome-sass'
+gem 'will_paginate', '~> 3.0'
+gem 'will_paginate-foundation'
 
 # This makes Heroku happy:
 gem 'rails_12factor', group: :production

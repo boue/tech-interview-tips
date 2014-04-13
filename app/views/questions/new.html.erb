@@ -1,16 +1,18 @@
 <% content_for :title do %>Add a technical interview question<% end %>
+<style>
+  h1 {
+    margin-top: 0;
+    padding-top: 0;
+    font-family: 'Candal', sans-serif;
+  }
+</style>
 <div class="row">
   <div class="small-12 large-12 columns panel">
     <h1>Post a Question</h1>
      <%= form_for @question do |f| %>
      <div class="row">
        <div class="small-12 large-12 columns">
-          <%= f.text_field :title, placeholder: "Question Title ..." %>
-        </div>
-      </div>
-      <div class="row">
-        <div class="small-12 large-12 columns">
-          <%= f.text_area :content, placeholder: "Question Body ... (Markdown supported)", size: "60x12" %>
+          <%= f.text_field :title, placeholder: "Question ...", size: "60x12" %>
         </div>
       </div>
       <div class="row">

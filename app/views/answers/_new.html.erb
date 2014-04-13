@@ -1,5 +1,5 @@
 <%= form_for Answer.new do |f| %>
-    <%= f.text_area :content, placeholder: "Your answer ... (Markdown supported)" %>
-    <%= f.hidden_field :question_id, value: @question.id %>
-    <%= f.submit %>
-  <% end %>
+  <%= f.text_area :content, placeholder: "Your answer ... (Markdown with fenced codeblocks supported)" %>
+  <%= f.hidden_field :question_id, value: @question.id %>
+  <%= f.submit %>
+<% end %>

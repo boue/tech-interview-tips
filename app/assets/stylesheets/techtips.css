@@ -1,0 +1,48 @@
+@import url(http://fonts.googleapis.com/css?family=Candal);
+.headline { 
+  font-family: ‘Candal’, sans-serif;
+  font-weight: 400;
+}
+
+.img-container {
+  height: 100%;
+  margin: 0 auto;
+  background: url(http://666a658c624a3c03a6b2-25cda059d975d2f318c03e90bcf17c40.r92.cf1.rackcdn.com/unsplash_52b6b4db7397c_1.JPG) no-repeat center center fixed;
+  -moz-background-size: cover;
+  -webkit-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.clear {
+  clear: both;
+}
+
+.clearfix:after {
+  content: '';
+  clear: both;
+  display: block;
+  height: 0;
+  width: 0;
+}
+
+.gravatar-nav {
+  width: 46px;
+  height: 46px;
+  display: block;
+}
+
+.gravatar-body {
+  width: 46px;
+  height: 46px;
+  -webkit-border-radius: 23px;
+  -moz-border-radius: 23px;
+  border-radius: 23px;
+  float: right;
+  margin-left: 10px;
+}
+
+body {
+  background-image:url('mochaGrunge.png') !important;
+  background-repeat:repeat !important;
+}
