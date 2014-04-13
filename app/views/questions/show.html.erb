@@ -33,7 +33,9 @@
 
     <% end %>
     <span data-tooltip class="has-tip" title="Pageviews"><i class="fa fa-eye"></i></span><br>
-    <%= @question.impressionist_count %>
+    <%= @question.impressionist_count %><br><br>
+
+    <%= render partial: "questions/share" %>
 
   </div>
 
