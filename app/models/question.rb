@@ -8,7 +8,7 @@ class Question < ActiveRecord::Base
 
   validates :title, presence: true
 
-  after_create :create_activity
+  after_create :create_action
 
   default_scope -> { order('created_at DESC') }
 
@@ -28,7 +28,7 @@ class Question < ActiveRecord::Base
     end
   end
 
-  def create_activity
+  def create_action
     Action.create(
       actionable: self,
       content: 'New question:',

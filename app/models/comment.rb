@@ -4,11 +4,11 @@ class Comment < ActiveRecord::Base
   validates :content, presence: true
   belongs_to :user
 
-  after_create :create_activity
+  after_create :create_action
 
   private
 
-  def create_activity
+  def create_action
     Action.create(
       actionable: self,
       content: 'New comment:',
