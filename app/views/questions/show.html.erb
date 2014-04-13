@@ -59,6 +59,9 @@
   <div class="row">
     <div class="small-12 large-12 columns panel">
       <p><%= markdown answer.content %></p>
+      <%= link_to kudos_path(question_id: @question.id, answer_id: answer.id), class: "fa fa-thumbs-up", method: :post do %>
+        <% end %>
+        <%= answer.kudos.count %>
       <div class="gravatar-body"><%= gravatar_for(answer.user) %></div>
       <% if answer.user.provider == "github" %>
         <p class="text-right">Posted by: <i class="fa fa-github-square"></i> <%= link_to answer.user.name, "https://github.com/#{answer.user.name}" %><br>

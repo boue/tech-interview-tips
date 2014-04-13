@@ -4,7 +4,7 @@ describe QuestionsController do
 
   before(:each) { QuestionsController.any_instance.stub(:check_current_user)
    }
-      # .and_return('companyid')  # code to possibly add to line 5
+      # Note: .and_return('variable')  can be added on to stub in line 5
 
   context "#show" do
     let(:question) { FactoryGirl.create :question }
@@ -46,7 +46,6 @@ describe QuestionsController do
 
     xit "if given invalid parameters, it renders new view" do
       expect {
-        get
         post :create, :question => {}
           # , question: {:title => new_title , :content => nil} )
       }.to render_template :new
