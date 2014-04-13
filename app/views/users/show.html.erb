@@ -1,0 +1,37 @@
+<% content_for :title do %><%= @user.name %><% end %>
+<style>
+  h1 {
+    margin-top: 0;
+    padding-top: 0;
+    font-family: 'Candal', sans-serif;
+  }
+</style>
+<div class="row">
+  <div class="small-12 large-12 columns panel">
+  <%= render partial: "layouts/alerts" %>
+    <p>
+    <h1><%= @user.name %></h1>
+    <hr>
+    <h3>Interview Prep</h3>
+    <% if current_user.id == @user.id %>
+      <% @user.favorites.each do |favorite| %>
+      <div class="row">
+        <div class="small-12 large-12 columns panel">
+          <%= link_to favorite.favoritable.title, question_path(favorite.favoritable) %><br>
+        </div>
+      </div>
+      <% end %>
+    <% end %>
+    <i class="fa fa-floppy-o grey-out"></i>
+    <!-- <h3>Your Questions</h3>
+    <% if current_user.id == @user.id %>
+      <% @user.questions.each do |question| %>
+      <div class="row">
+        <div class="small-12 large-12 columns panel">
+          <%= link_to question.title, question_path(question) %><br>
+        </div>
+      </div>
+      <% end %>
+    <% end %> -->
+  </div>
+</div>
