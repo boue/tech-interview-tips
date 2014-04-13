@@ -23,15 +23,8 @@
       </div>
       <% end %>
     <% end %>
-    <i class="fa fa-floppy-o grey-out"></i>
-    <% Action.where(user_id: current_user.id, actionable_type: "Question").each do |action| %>
-      <li><%= action.content + " " %><%= action.actionable.title %></li>
-    <% end %>
-    <% Action.where(user_id: current_user.id, actionable_type: "Answer").each do |action| %>
-      <li><%= action.content + " " %><%= action.actionable.content %></li>
-    <% end %>
-    <% Action.where(user_id: current_user.id, actionable_type: "Comment").each do |action| %>
-      <li><%= action.content + " " %><%= action.actionable.content %></li>
-    <% end %>
+
+    <!-- Activity Feed Here? -->
+
   </div>
 </div>
