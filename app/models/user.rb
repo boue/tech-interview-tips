@@ -4,6 +4,11 @@ class User < ActiveRecord::Base
   has_many :comments
   has_many :favorites
   has_many :kudos
+  has_many :actions
+
+  def recent_actions(limit)
+    actions.order('created_at DESC').limit(limit)
+  end
 
   def self.from_omniauth(auth)
     where(auth.slice("provider", "uid")).first || create_from_omniauth(auth)

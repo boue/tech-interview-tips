@@ -2,6 +2,7 @@ class QuestionsController < ApplicationController
   before_action :set_question, only: [:edit, :update, :destroy]
   before_action :set_question_redirect, only: [:show]
   before_action :check_current_user, only: [:new, :edit, :update, :destroy ]
+  impressionist actions: [:show]
 
   def index 
     if params[:tag]
@@ -18,6 +19,7 @@ class QuestionsController < ApplicationController
   end
 
   def show
+    impressionist(@question)
   end
 
   def new

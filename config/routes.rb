@@ -7,7 +7,10 @@ TechInterviewTips::Application.routes.draw do
   resources :favorites, only: [:create]
   resources :users, only: [:show]
 
+
   get 'tags/:tag', to: 'questions#index', as: :tag
+  
+  get 'about', to: 'pages#about'
 
   # These are for OmniAuth:
   get 'auth/:provider/callback', to: 'sessions#create'
