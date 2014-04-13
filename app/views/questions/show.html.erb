@@ -14,17 +14,17 @@
     <hr>
 
     <% if current_user %>
-      <p>
-        <%= link_to kudos_path(question_id: @question.id), class: "fa fa-thumbs-up", method: :post do %>
-          <% end %> : <%= @question.kudos.count %> 
-        <%= link_to favorites_path(question_id: @question.id), class: "fa fa-floppy-o", method: :put, id: "save-question", remote: true do %>
-          <% end %> : <%= @question.favorites.count %>
-      </p>
+      <%= link_to kudos_path(question_id: @question.id), class: "fa fa-thumbs-up", method: :post do %>
+        <% end %><br>
+      <%= @question.kudos.count %><br><br>
+      <%= link_to favorites_path(question_id: @question.id), class: "fa fa-floppy-o", method: :put, id: "save-question", remote: true do %>
+        <% end %><br>
+      <%= @question.favorites.count %>
     <% else %>
-      <p>
-        <i class="fa fa-thumbs-up grey-out"></i>: <%= @question.kudos.count %> 
-        <i class="fa fa-floppy-o grey-out"></i>: <%= @question.favorites.count %>
-      </p>
+      <i class="fa fa-thumbs-up grey-out"></i><br>
+      <%= @question.kudos.count %><br><br>
+      <i class="fa fa-floppy-o grey-out"></i><br>
+      <%= @question.favorites.count %><br>
     <% end %>
 
     <% if current_user %>
