@@ -2,24 +2,24 @@ require 'spec_helper'
 
 describe QuestionsController do
 
-  # where to put skip_action_callback in tests? to skip before_actions
+  before(:each) { QuestionsController.any_instance.stub(:check_current_user)
+   }
+      # Note: .and_return('variable')  can be added on to stub in line 5
 
-  #below test not passing because of "before_action" statement
   context "#show" do
     let(:question) { FactoryGirl.create :question }
     it "is successful" do
+      QuestionsController.any_instance.stub(:set_question_redirect)
       get :show, id: question.id
       expect(response).to render_template(:show)
     end
 
-  #below test not passing
     it "assigns @question to the Question found by id" do
       get :show, id: question.id
       expect(assigns(:question)).to eq question
     end
   end
 
-  #below test not passing because of "before_action" statement
   context "#new" do
     it "is successful" do
       get :new
@@ -46,7 +46,6 @@ describe QuestionsController do
 
     xit "if given invalid parameters, it renders new view" do
       expect {
-        get
         post :create, :question => {}
           # , question: {:title => new_title , :content => nil} )
       }.to render_template :new
