@@ -11,6 +11,8 @@
     <%= javascript_include_tag "vendor/modernizr" %>
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag    "techtips" %>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
   </head>
 
   <body>
@@ -35,7 +37,7 @@
             <div class="row collapse">
               <form action="/questions" method="get">
                 <div class="large-8 small-9 columns" "margin-right:0;">
-                  <%= text_field_tag :search, params[:search], placeholder: "Find Stuff" %>
+                  <%= text_field_tag :search, params[:search], placeholder: "Find Questions" %>
                 </div>
                 <div class="large-4 small-3 columns" style="margin-left:0;">
                   <%= submit_tag "Search", :name => nil, class: "alert button expand" %>
