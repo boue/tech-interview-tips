@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe AnswersController do
+  render_views
 
   context "#show" do
     let(:answer) { FactoryGirl.create :answer }
@@ -16,28 +17,30 @@ describe AnswersController do
   end
 
   # context "#new" do
-  #   problem due to no new view, instead is a partial _new
+  #   # problem due to no new view, instead is a partial _new
   #   it "is successful" do
   #     get :new
-  #     expect(response).to render_template(:new)
+  #     expect(response).to render_template(partial: :_new)
   #   end
 
-  #   it "assigns @answer to the answer found by id" do
-  #     get :new
-  #     expect(assigns(:answer)).to be_a_new Answer
-  #   end
+    # it "assigns @answer to the answer found by id" do
+    #   get :new
+    #   expect(assigns(:answer)).to be_a_new Answer
+    # end
   # end
 
   context "#create" do
-  #   before :each do
-  #     @user = FactoryGirl.create(:user)
-  #     session[:user_id] = @user.id
-  #   end
+    before :each do
+      @user = FactoryGirl.create :user
+      @question = FactoryGirl.create :question
+    end
 
   # needs work
-    it "if given valid parameters, it creates a new question" do
+    it "if given valid parameters, it creates a new answer" do
       expect {
-        post(:create, answer: FactoryGirl.attributes_for(:answer))
+        AnswersController.any_instance.stub(:current_user).and_return(@user)
+        post(:create, answer: { content: "Test answer", question_id: @question.id.to_s }
+          )
       }.to change{Answer.count}.by(1)
     end
 
