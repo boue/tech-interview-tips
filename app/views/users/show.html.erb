@@ -23,15 +23,8 @@
       <% end %>
     <% end %>
     <i class="fa fa-floppy-o grey-out"></i>
-    <!-- <h3>Your Questions</h3>
-    <% if current_user.id == @user.id %>
-      <% @user.questions.each do |question| %>
-      <div class="row">
-        <div class="small-12 large-12 columns panel">
-          <%= link_to question.title, question_path(question) %><br>
-        </div>
-      </div>
-      <% end %>
-    <% end %> -->
+    <% Action.where(user_id: current_user.id).each do |action| %>
+      <li><%= action.content + " " %><%= link_to action.actionable.title, question_path(action.actionable.title) %></li>
+    <% end %>
   </div>
 </div>
