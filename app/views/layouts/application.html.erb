@@ -11,13 +11,11 @@
     <%= javascript_include_tag "vendor/modernizr" %>
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag    "techtips" %>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
   </head>
 
   <body>
-<!-- mobile menu -->
-
-<!-- end mobile menu -->
-
 
   <div class="contain-to-grid fixed">
     <nav class="top-bar" data-topbar>
@@ -35,7 +33,7 @@
             <div class="row collapse">
               <form action="/questions" method="get">
                 <div class="large-8 small-9 columns" "margin-right:0;">
-                  <%= text_field_tag :search, params[:search], placeholder: "Find Stuff" %>
+                  <%= text_field_tag :search, params[:search], placeholder: "Find Questions" %>
                 </div>
                 <div class="large-4 small-3 columns" style="margin-left:0;">
                   <%= submit_tag "Search", :name => nil, class: "alert button expand" %>
@@ -47,6 +45,9 @@
             <a href="#">Categories</a>
             <ul class="dropdown">
               <li><%= link_to "All Questions", questions_path %></li>
+              <li><a href="http://www.techinterview.tips/questions?search=Ruby">Ruby</a></li>
+              <li><a href="http://www.techinterview.tips/questions?search=Javascript">Javascript</a></li>
+              <li><a href="http://www.techinterview.tips/questions?search=JQuery">JQuery</a></li>
             </ul>
           </li>
         </ul>
@@ -75,6 +76,42 @@
         </ul>
       </section>
     </nav>
+
+    <!-- mobile menu -->
+
+    <div class="off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
+        <aside class="right-off-canvas-menu">
+        <section class="right-small">
+          <a class="right-off-canvas-toggle menu-icon" href="#"><span></span></a>
+        </section>
+        <ul class="off-canvas-list">
+          <li><label>Categories</label></li>
+          <li><%= link_to "All Questions", questions_path %></li>
+          <li><a href="http://www.techinterview.tips/questions?search=Ruby">Ruby</a></li>
+          <li><a href="http://www.techinterview.tips/questions?search=Javascript">Javascript</a></li>
+          <li><a href="http://www.techinterview.tips/questions?search=JQuery">JQuery</a></li>
+          <% if current_user %>
+            <li><%= link_to "Interview Prep", user_path(current_user) %></li>
+            <li><%= link_to "Post a Question", new_question_path %></li>
+            <li><%= link_to "Sign out", signout_path %></li>
+          <% else %>
+            <li><%= link_to "Using GitHub", "/auth/github" %></li>
+            <li><%= link_to "Using Linked-In", "/auth/linkedin" %></li>
+          <% end %>
+        </ul>
+        </aside>
+        <a class="exit-off-canvas"></a>
+      </div>
+    </div>
+    
+<!--     <nav class="tab-bar">
+      <section class="right-small">
+        <a class="right-off-canvas-toggle menu-icon" ><span></span></a>
+      </section>
+    </nav> -->
+    <!-- end mobile menu -->
+
   </div>
     <!-- <div class="notice"><%= notice %></div>
     <div class="alert"><%= alert %></div> -->
