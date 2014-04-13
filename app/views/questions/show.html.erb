@@ -24,6 +24,10 @@
         <% end %></span><br>
       <%= @question.favorites.count %><br><br>
       <span data-tooltip class="has-tip" title="Pageviews"><%= @question.impressionist_count %></span><br>
+      <!-- <i class="fa fa-facebook-square" href="http://www.facebook.com/"></a></i> -->
+      <%= link_to "https://www.facebook.com/" do %>
+      <i class="fa fa-facebook-square"></i>
+      <% end %>
 
     <% else %>
 

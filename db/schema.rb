@@ -29,15 +29,6 @@ ActiveRecord::Schema.define(version: 20140413181240) do
   add_index "actions", ["actionable_type"], name: "index_actions_on_actionable_type", using: :btree
   add_index "actions", ["user_id"], name: "index_actions_on_user_id", using: :btree
 
-  create_table "activities", force: true do |t|
-    t.string   "content"
-    t.integer  "activable_id"
-    t.string   "activable_type"
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "answers", force: true do |t|
     t.text     "content"
     t.integer  "question_id"
@@ -128,6 +119,22 @@ ActiveRecord::Schema.define(version: 20140413181240) do
   end
 
   add_index "questions", ["slug"], name: "index_questions_on_slug", unique: true, using: :btree
+
+  create_table "taggings", force: true do |t|
+    t.integer  "tag_id"
+    t.integer  "question_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "taggings", ["question_id"], name: "index_taggings_on_question_id", using: :btree
+  add_index "taggings", ["tag_id"], name: "index_taggings_on_tag_id", using: :btree
+
+  create_table "tags", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "provider"
