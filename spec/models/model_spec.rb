@@ -4,8 +4,10 @@ describe User do
   context "associations" do
     it { should have_many :questions }
     it { should have_many :answers }
+    it { should have_many :comments }
     it { should have_many :favorites }
     it { should have_many :kudos }
+    it { should have_many :actions}
   end
 end
 
@@ -14,6 +16,8 @@ describe Question do
     it { should belong_to :user }
     it { should have_many :favorites }
     it { should have_many :answers }
+    it { should have_many :comments }
+    it { should have_many :kudos }
   end
 
   context "validations" do
@@ -38,9 +42,14 @@ end
 describe Comment do
   context "associations" do
     it { should have_many :comments }
+    it { should belong_to :user }
+    it { should belong_to :commentable }
+  end
+
+  context "validations" do
+    it { should validate_presence_of :content }
   end
 end
-
 
 describe Category do
   context "associations" do
@@ -63,5 +72,11 @@ describe Kudo do
   context "associations" do
     it { should belong_to :user }
     it { should belong_to :kudosible }
+  end
+end
+
+describe Action do
+  context "associations" do
+    it { should belong_to :user }
   end
 end
