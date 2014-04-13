@@ -6,6 +6,8 @@ class Question < ActiveRecord::Base
 
   belongs_to :user
 
+  acts_as_taggable
+
   validates :title, presence: true
 
   after_create :create_action
