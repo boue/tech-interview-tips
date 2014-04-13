@@ -1,7 +1,3 @@
-# tests for answers
-
-############################
-
 # require 'spec_helper'
 
 # describe AnswersController do
