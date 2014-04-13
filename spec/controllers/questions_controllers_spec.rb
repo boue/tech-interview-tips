@@ -4,7 +4,7 @@ describe QuestionsController do
 
   before(:each) { QuestionsController.any_instance.stub(:check_current_user)
    }
-      # Note: .and_return('variable')  can be added on to stub in line 5
+      # Note: .and_return('variable')  can be added on to stub in line 5.  This is often needed for the stub to be correct.
 
   context "#show" do
     let(:question) { FactoryGirl.create :question }
