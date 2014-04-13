@@ -46,3 +46,7 @@ body {
   background-image:url('mochaGrunge.png') !important;
   background-repeat:repeat !important;
 }
+
+.grey-out {
+  color: rgba(0,0,0,.4);
+}
