@@ -10,7 +10,8 @@
   <div class="small-12 large-12 columns panel">
   <%= render partial: "layouts/alerts" %>
     <p>
-    <h3><%= @question.title %></h3>
+    <h3><%= @question.title %>
+    <small><%= render partial: "questions/share" %></small></h3>
     <hr>
 
   <div class="left">
@@ -34,8 +35,6 @@
     <% end %>
     <span data-tooltip class="has-tip" title="Pageviews"><i class="fa fa-eye"></i></span><br>
     <%= @question.impressionist_count %><br><br>
-
-    <%= render partial: "questions/share" %>
 
   </div>
 
