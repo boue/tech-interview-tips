@@ -10,6 +10,7 @@ class QuestionsController < ApplicationController
   end
 
   def show
+    impressionist(@question)
   end
 
   def new

@@ -10,6 +10,8 @@ class Question < ActiveRecord::Base
 
   after_create :create_action
 
+  is_impressionable
+
   default_scope -> { order('created_at DESC') }
 
   extend FriendlyId
