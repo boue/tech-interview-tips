@@ -14,14 +14,10 @@
     <hr>
     <% if current_user %>
       <p>
-        <% if current_user %>
-          <% if current_user %>
-            <%= link_to kudos_path(question_id: @question.id), class: "fa fa-thumbs-up", method: :post do %>
-            <% end %>
-          <%= @question.kudos.count %>
+        <%= link_to kudos_path(question_id: @question.id), class: "fa fa-thumbs-up", method: :post do %>
         <% end %>
+        <%= @question.kudos.count %>
         <i class="fa fa-floppy-o"></i>
-        <% end %>
       </p>
     <% end %>
     <% if current_user %>
