@@ -8,4 +8,16 @@ class Answer < ActiveRecord::Base
 
   validates :content, presence: true
 
+  after_create :create_activity
+
+  private
+
+  def create_activity
+    Action.create(
+      actionable: self,
+      content: 'New answer:',
+      user: User.find(self.user_id)
+    )
+  end
+
 end
