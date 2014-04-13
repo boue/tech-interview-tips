@@ -14,10 +14,10 @@
     <hr>
 
     <% if current_user %>
-      <%= link_to kudos_path(question_id: @question.id), class: "fa fa-thumbs-up", method: :post do %>
+      <%= link_to kudos_path(question_id: @question.id), title: "Give this question a thumbs-up.", class: "fa fa-thumbs-up", method: :post do %>
         <% end %><br>
       <%= @question.kudos.count %><br><br>
-      <%= link_to favorites_path(question_id: @question.id), class: "fa fa-floppy-o", method: :put, id: "save-question", remote: true do %>
+      <%= link_to favorites_path(question_id: @question.id), title: "Save this question to your study hall.", class: "fa fa-floppy-o", method: :post do %>
         <% end %><br>
       <%= @question.favorites.count %>
     <% else %>
