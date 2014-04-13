@@ -12,7 +12,17 @@
     <p>
     <h1><%= @user.name %></h1>
     <hr>
-    <h3>Your Questions</h3>
+    <h3>Interview Prep</h3>
+    <% if current_user.id == @user.id %>
+      <% @user.favorites.each do |favorite| %>
+      <div class="row">
+        <div class="small-12 large-12 columns panel">
+          <%= link_to favorite.favoritable.title, question_path(favorite.favoritable) %><br>
+        </div>
+      </div>
+      <% end %>
+    <% end %>
+    <!-- <h3>Your Questions</h3>
     <% if current_user.id == @user.id %>
       <% @user.questions.each do |question| %>
       <div class="row">
@@ -21,6 +31,6 @@
         </div>
       </div>
       <% end %>
-    <% end %>
+    <% end %> -->
   </div>
 </div>
