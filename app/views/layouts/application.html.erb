@@ -58,6 +58,7 @@
             <li class="has-dropdown">
               <a href="#"><%= current_user.name %></a>
               <ul class="dropdown">
+              <li><%= link_to "Interview Prep", user_path(current_user) %></li>
               <li><%= link_to "Post a Question", new_question_path %></li>
               <li></li>
               </ul>
