@@ -1,6 +1,6 @@
 <% content_for :title do %><%= @question.title %><% end %>
 <style>
-  h1 {
+  h1, h2, h3{
     margin-top: 0;
     padding-top: 0;
     font-family: 'Candal', sans-serif;
@@ -10,23 +10,31 @@
   <div class="small-12 large-12 columns panel">
   <%= render partial: "layouts/alerts" %>
     <p>
-    <h2><%= @question.title %></h2>
+    <h3><%= @question.title %></h3>
     <hr>
-    <div class="left">
+
+  <div class="left">
 
     <% if current_user %>
+
       <span data-tooltip class="has-tip" title="Give this question a thumbs-up."><%= link_to kudos_path(question_id: @question.id), class: "fa fa-thumbs-up", method: :post do %>
         <% end %></span><br>
       <%= @question.kudos.count %><br><br>
       <span data-tooltip class="has-tip" title="Save this question to your Interview Prep area."><%= link_to favorites_path(question_id: @question.id), class: "fa fa-floppy-o", method: :post do %>
         <% end %></span><br>
       <%= @question.favorites.count %>
+
     <% else %>
-      <span data-tooltip class="has-tip" title="Sign-in to give this question a thumbs-up."><%= @question.favorites.count %></span>
+
+      <span data-tooltip class="has-tip" title="Sign-in to give this question a thumbs-up."><i class="fa fa-floppy-o grey-out"></i></span><br>
       <%= @question.kudos.count %><br><br>
       <span data-tooltip class="has-tip" title="Sign in to save this question to your interview prep area."><i class="fa fa-floppy-o grey-out"></i></span><br>
+      <%= @question.favorites.count %>
+
     <% end %>
+
   </div>
+
     <% if current_user %>
       <% if current_user.id == @question.user.id %>
       <p class="text-right"><%= link_to "edit", edit_question_path(@question), class: "button [tiny small large]" %>
