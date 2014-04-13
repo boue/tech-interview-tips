@@ -5,8 +5,8 @@ class Answer < ActiveRecord::Base
   has_many :favorites, as: :favoritable
   has_many :kudos, as: :kudosible
   has_many :comments, as: :commentable, dependent: :destroy
-
   validates :content, presence: true
+  default_scope -> { order('created_at DESC') }
 
   # after_create :create_action
 

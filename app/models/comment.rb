@@ -3,8 +3,8 @@ class Comment < ActiveRecord::Base
   has_many :comments, as: :commentable
   validates :content, presence: true
   belongs_to :user
-
   after_create :create_action
+  default_scope -> { order('created_at DESC') }
 
   private
 
@@ -15,4 +15,5 @@ class Comment < ActiveRecord::Base
       user: User.find(self.user_id)
     )
   end
+
 end
