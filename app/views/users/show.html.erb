@@ -13,16 +13,18 @@
     <h1><%= @user.name %></h1>
     <hr>
     <h3>Interview Prep</h3>
+  <p>Click the <i class="fa fa-floppy-o"></i> icon next to a question so that it will appear here for future reference.</p>
     <% if current_user.id == @user.id %>
       <% @user.favorites.each do |favorite| %>
       <div class="row">
-        <div class="small-12 large-12 columns panel">
+        <div class="small-12 large-12 columns">
+        <hr>
           <%= link_to favorite.favoritable.title, question_path(favorite.favoritable) %><br>
         </div>
       </div>
       <% end %>
     <% end %>
-    <i class="fa fa-floppy-o grey-out"></i>
+
     <!-- <h3>Your Questions</h3>
     <% if current_user.id == @user.id %>
       <% @user.questions.each do |question| %>

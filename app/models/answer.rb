@@ -7,5 +7,5 @@ class Answer < ActiveRecord::Base
   has_many :comments, as: :commentable, dependent: :destroy
 
   validates :content, presence: true
-
+  default_scope -> { order('created_at DESC') }
 end

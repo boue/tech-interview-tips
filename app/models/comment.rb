@@ -3,4 +3,5 @@ class Comment < ActiveRecord::Base
   has_many :comments, as: :commentable
   validates :content, presence: true
   belongs_to :user
+  default_scope -> { order('created_at DESC') }
 end
