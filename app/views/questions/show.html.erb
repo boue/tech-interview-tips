@@ -23,16 +23,17 @@
       <span data-tooltip class="has-tip" title="Save this question to your Interview Prep area."><%= link_to favorites_path(question_id: @question.id), class: "fa fa-floppy-o", method: :post do %>
         <% end %></span><br>
       <%= @question.favorites.count %><br><br>
-      <span data-tooltip class="has-tip" title="Pageviews"><%= @question.impressionist_count %></span><br>
 
     <% else %>
 
       <span data-tooltip class="has-tip" title="Sign-in to give this question a thumbs-up."><i class="fa fa-thumbs-up grey-out"></i></span><br>
       <%= @question.kudos.count %><br><br>
       <span data-tooltip class="has-tip" title="Sign in to save this question to your interview prep area."><i class="fa fa-floppy-o grey-out"></i></span><br>
-      <%= @question.favorites.count %>
+      <%= @question.favorites.count %><br><br>
 
     <% end %>
+    <span data-tooltip class="has-tip" title="Pageviews"><i class="fa fa-eye"></i></span><br>
+    <%= @question.impressionist_count %>
 
   </div>
 
@@ -66,11 +67,16 @@
 
 <% @question.answers.each do |answer| %>
   <div class="row">
-    <div class="small-12 large-12 columns panel">
-      <p><%= markdown answer.content %></p>
-      <%= link_to kudos_path(question_id: @question.id, answer_id: answer.id), class: "fa fa-thumbs-up", method: :post do %>
-        <% end %>
+    <div class="small-12 large-12 columns panel clearfix">
+
+      <div class="left">
+        <span data-tooltip class="has-tip" title="Give this answer a thumbs-up.">
+        <%= link_to kudos_path(question_id: @question.id, answer_id: answer.id), class: "fa fa-thumbs-up", method: :post do %>
+      <% end %></span>
         <%= answer.kudos.count %>
+      </div>
+
+      <p><%= markdown answer.content %></p>
       <div class="gravatar-body"><%= gravatar_for(answer.user) %></div>
       <% if answer.user.provider == "github" %>
         <p class="text-right">Posted by: <i class="fa fa-github-square"></i> <%= link_to answer.user.name, "https://github.com/#{answer.user.name}" %><br>
