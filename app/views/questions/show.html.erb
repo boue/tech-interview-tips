@@ -26,7 +26,7 @@
       <%= @question.kudos.count %><br><br>
       <span data-tooltip class="has-tip" title="Sign in to save this question to your interview prep area."><i class="fa fa-floppy-o grey-out"></i></span><br>
     <% end %>
-</div>
+  </div>
     <% if current_user %>
       <% if current_user.id == @question.user.id %>
       <p class="text-right"><%= link_to "edit", edit_question_path(@question), class: "button [tiny small large]" %>
