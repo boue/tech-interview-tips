@@ -32,9 +32,5 @@
     <% Action.where(user_id: current_user.id, actionable_type: "Comment").each do |action| %>
       <li><%= action.content + " " %><%= action.actionable.content %></li>
     <% end %>
-    <br>
-    <%= @user.recent_actions(10).each do |action| %>
-      <li><%= action.actionable.content %></li>
-    <% end %>
   </div>
 </div>
