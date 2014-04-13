@@ -8,6 +8,9 @@ class Question < ActiveRecord::Base
 
   validates :title, presence: true
 
+  after_create :create_action
+
+  is_impressionable
 
   default_scope -> { order('created_at DESC') }
 
@@ -25,5 +28,13 @@ class Question < ActiveRecord::Base
     else
       find(:all)
     end
+  end
+
+  def create_action
+    Action.create(
+      actionable: self,
+      content: 'New question:',
+      user: User.find(self.user_id)
+    )
   end
 end

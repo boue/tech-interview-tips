@@ -22,7 +22,8 @@
       <%= @question.kudos.count %><br><br>
       <span data-tooltip class="has-tip" title="Save this question to your Interview Prep area."><%= link_to favorites_path(question_id: @question.id), class: "fa fa-floppy-o", method: :post do %>
         <% end %></span><br>
-      <%= @question.favorites.count %>
+      <%= @question.favorites.count %><br><br>
+      <span data-tooltip class="has-tip" title="Pageviews"><%= @question.impressionist_count %></span><br>
 
     <% else %>
 
