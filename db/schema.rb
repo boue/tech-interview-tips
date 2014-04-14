@@ -29,15 +29,6 @@ ActiveRecord::Schema.define(version: 20140413181240) do
   add_index "actions", ["actionable_type"], name: "index_actions_on_actionable_type", using: :btree
   add_index "actions", ["user_id"], name: "index_actions_on_user_id", using: :btree
 
-  create_table "activities", force: true do |t|
-    t.string   "content"
-    t.integer  "activable_id"
-    t.string   "activable_type"
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "answers", force: true do |t|
     t.text     "content"
     t.integer  "question_id"
