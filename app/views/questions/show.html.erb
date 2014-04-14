@@ -77,6 +77,12 @@
         <%= answer.kudos.count %>
       </div>
 
+      <% if current_user %>
+        <% if current_user.id == answer.user_id %>
+        <%= link_to "delete", answer_path(answer), method: :delete %>
+        <% end %>
+    <% end %>
+
       <p><%= markdown answer.content %></p>
       <div class="gravatar-body"><%= gravatar_for(answer.user) %></div>
       <% if answer.user.provider == "github" %>
@@ -84,12 +90,12 @@
       <% else %>
         <p class="text-right">Posted by: <i class="fa fa-linkedin-square"></i> <%= link_to answer.user.name, answer.user.url %><br>
       <% end %>
-        <%= link_to "delete", answer_path(answer), method: :delete %>
       <%= time_ago_in_words(answer.created_at) %> ago</p>
       <% if current_user %>
     <%= render partial: "comments/new", locals: { question: @question, answer: answer } %>
       <% end %>
     <%= render partial: "comments/show", locals: { answer: answer } %>
     </div>
+
   </div>
 <% end %>
