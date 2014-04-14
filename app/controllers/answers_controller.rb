@@ -11,11 +11,13 @@ class AnswersController < ApplicationController
 
   def create
     question = Question.find(params[:answer][:question_id])
-    answer = Answer.new answer_params
+    answer = Answer.new(answer_params)
     question.answers << answer
     answer.user_id = current_user.id
     if answer.save
       redirect_to question_path(question)
+    else
+      redirect_to question_path(question), flash: { notice: "Answer can't be blank."}
     end
   end
 
