@@ -24,12 +24,5 @@
       <% end %>
     <% end %>
     <hr>
-    <% Action.where(user_id: current_user.id, actionable_type: "Question").each do |action| %>
-      <li><%= action.content + " " %><%= link_to action.actionable.title, question_path(action.actionable) %><%= " created by " %> <%= link_to User.find(action.user_id).name, user_path(User.find(action.user_id)) %><%= " " +time_ago_in_words(action.created_at) + " ago" %></li>
-    <% end %>
-    <% Action.where(user_id: current_user.id, actionable_type: "Answer").each do |action| %>
-      <li><%= action.content + " " %><%= action.actionable.content %><%= " created by " %> <%= link_to User.find(action.user_id).name, user_path(User.find(action.user_id)) %><%= " " +time_ago_in_words(action.created_at) + " ago" %></li>
-    <% end %>
-
   </div>
 </div>
