@@ -1,5 +1,5 @@
 class QuestionSerializer < ActiveModel::Serializer
-  attributes :title, :content, :url
+  attributes :title, :url
 
   has_many :answers, serializer: AnswerSerializer
 
