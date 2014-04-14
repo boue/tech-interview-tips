@@ -42,3 +42,12 @@ RSpec.configure do |config|
   #     --seed 1234
   config.order = "random"
 end
+
+# for capybara with oauth
+OmniAuth.config.test_mode = true
+OmniAuth.config.mock_auth[:github] = OmniAuth:AuthHash.new({
+  :provider => 'github',
+  :uid => '1234567'
+  })
+
+

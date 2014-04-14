@@ -13,6 +13,20 @@ describe "Options when not logged in", :type => :feature do
     expect(current_path).to eq('/')
   end
 
-# need to add capybara tests with stubbing of user logged it, to test other features
-
 end
+
+describe "Authorization", type => :feature do
+
+  it "let's user login and shows logout link" do
+    visit '/'
+    click_link('Sign in')
+    click_link('Using GitHub')
+    page.should have_link "Logout"
+
+    # example for waiting
+    # find("href").click_link("baz")
+    # <a href="/auth/github">Using GitHub</a>
+
+  end
+end
+
