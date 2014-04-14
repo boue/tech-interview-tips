@@ -3,7 +3,7 @@
   <p><%= markdown comment.content %></p>
   <% if current_user %>
     <% if current_user.id == comment.user_id %>
-      <p><%= link_to "delete", comment_path(comment), method: :delete %></p>
+      <p class="text-right"><%= link_to "delete", comment_path(comment), method: :delete, class: "button [tiny small large]" %></p>
     <% end %>
   <% end %>
   <% user = User.find(comment.commentable.user_id) %>
