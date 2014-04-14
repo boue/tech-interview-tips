@@ -1,0 +1,16 @@
+<% @users.each do |user| %>
+<div class="row">
+  <div class="small-12 large-12 columns panel">
+  <div class="gravatar-body-left"><%= gravatar_for(user) %></div>
+    <% if user.provider == "github" %>
+      <p class="text-left"><i class="fa fa-github-square"></i> <%= link_to user.name, "https://github.com/#{user.name}" %><br>
+    <% else %>
+      <p class="text-left"><i class="fa fa-linkedin-square"></i> <%= link_to user.name, user.url %><br>
+    <% end %>
+    <p class="text-right"><%= link_to "edit", edit_question_path(@question), class: "button [tiny small large]" %>
+    <%= link_to "delete", question_path(@question), method: :delete, class: "button [tiny small large]" %></p>
+    <%= "Account created " + time_ago_in_words(user.created_at) %> ago</p>
+  </div>
+  </div>
+</div>
+<% end %>
