@@ -7,8 +7,12 @@
     <% else %>
       <p class="text-left"><i class="fa fa-linkedin-square"></i> <%= link_to user.name, user.url %><br>
     <% end %>
-    <p class="text-right"><%= link_to "edit", edit_question_path(@question), class: "button [tiny small large]" %>
-    <%= link_to "delete", question_path(@question), method: :delete, class: "button [tiny small large]" %></p>
+    <ul class="text-left">
+      <li><%= "Questions created: " %><%= user.questions.count %></li>
+      <li><%= "Questions answered: " %><%= user.answers.count %></li>
+      <li><%= "Number of comments: " %><%= user.comments.count %></li>
+      <li><%= "Kudos given: " %><%= user.kudos.count %></li>
+    </ul>
     <%= "Account created " + time_ago_in_words(user.created_at) %> ago</p>
   </div>
   </div>
