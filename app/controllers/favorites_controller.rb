@@ -8,6 +8,9 @@ class FavoritesController < ApplicationController
       question.favorites << favorite
       favorite.save
     end
-    redirect_to question_path(question)
+    respond_to do |format|
+      format.json {render json: {fav_count: question.favorites.count}}
+      format.html { redirect_to question_path(question) }
+    end
   end
 end
