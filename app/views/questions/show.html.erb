@@ -73,6 +73,12 @@
         <% end %>
 
 
+      <% if current_user %>
+        <% if current_user.id == answer.user_id %>
+        <%= link_to "delete", answer_path(answer), method: :delete %>
+        <% end %>
+    <% end %>
+
       <p><%= markdown answer.content %></p>
       <div class="gravatar-body"><%= gravatar_for(answer.user) %></div>
       <% if answer.user.provider == "github" %>
@@ -86,5 +92,6 @@
       <% end %>
     <%= render partial: "comments/show", locals: { answer: answer } %>
     </div>
+
   </div>
 <% end %>
