@@ -1,0 +1,38 @@
+<% @actions.each do |action| %>
+  <% action %>
+<% end %>
+
+<% content_for :title do %>Technical Interview Questions<% end %>
+<style>
+  h1 {
+    margin-top: 0;
+    padding-top: 0;
+    font-family: 'Candal', sans-serif;
+  }
+  .label>a {
+    color: white;
+    text-decoration: none;
+  }
+</style>
+<div class="row">
+  <div class="small-12 large-12 columns panel">
+    <h1>Activity Feed</h1>
+    <% @actions.each do |action| %>
+      <hr>
+      <h4>
+        <%= action.content %>
+        <% if action.actionable_type == "Question" %>
+          <%= link_to action.actionable.title, question_path(action.actionable) %>
+        <% end %>
+        <% if action.actionable_type == "Answer" %>
+          <%= action.actionable.content %>
+        <% end %>
+        <%= " created by " %>
+        <%= link_to User.find(action.user_id).name, user_path(User.find(action.user_id)) %>
+        <%= " " + time_ago_in_words(action.created_at) + " ago" %>
+      </h4>
+    <% end %>
+    <hr>
+    <%= will_paginate @actions, renderer: FoundationPagination::Rails %>
+  </div>
+</div>

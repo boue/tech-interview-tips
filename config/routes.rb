@@ -6,10 +6,11 @@ TechInterviewTips::Application.routes.draw do
   resources :kudos, only: [:create]
   resources :favorites, only: [:create]
   resources :users, only: [:show]
+  resources :actions, only: [:index]
 
 
   get 'tags/:tag', to: 'questions#index', as: :tag
-  
+
   get 'about', to: 'pages#about'
 
   # These are for OmniAuth:

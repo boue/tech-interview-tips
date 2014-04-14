@@ -6,17 +6,17 @@ class Answer < ActiveRecord::Base
   has_many :kudos, as: :kudosible
   has_many :comments, as: :commentable, dependent: :destroy
   validates :content, presence: true
+  after_create :create_action
   default_scope -> { order('created_at DESC') }
 
-  # after_create :create_action
 
   private
 
   def create_action
     Action.create(
       actionable: self,
-      content: 'New answer:',
-      user: User.find(self.user_id)
+      content: 'Answer:',
+      user: User.find(Question.find(self.question_id).user_id)
     )
   end
 
