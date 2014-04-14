@@ -17,7 +17,7 @@
     <% @questions.each do |question| %>
       <hr>
       <h4><%= link_to question.title, question_path(question) %></h4>
-      <span class="label"><%= question.answers.count %> answers</span> <span class="label"><%= question.kudos.count %> kudos</span> <span class="label"><%= question.favorites.count %> saves</span><br>
+      <span class="label"><%= question.answers.count %> answers</span> <span class="label"><%= question.kudos.count %> kudos</span> <span class="label"><%= question.favorites.count %> saves</span> <span class="label"><%= question.impressionist_count %> page views</span><br>
       <% unless question.tag_list.count < 1 %>
         <span class="label"><%= raw question.tag_list.map { |t| link_to t, tag_path(t) }.join('</span> <span class="label">') %></span>
       <% end %>

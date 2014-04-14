@@ -9,35 +9,29 @@
 <div class="row">
   <div class="small-12 large-12 columns panel">
   <%= render partial: "layouts/alerts" %>
-    <p>
-    <h3><%= @question.title %></h3>
-    <hr>
 
-  <div class="left">
 
     <% if current_user %>
 
       <span data-tooltip class="has-tip" title="Give this question a thumbs-up."><%= link_to kudos_path(question_id: @question.id), class: "fa fa-thumbs-up", method: :post do %>
-        <% end %></span><br>
-      <%= @question.kudos.count %><br><br>
+        <% end %>&nbsp;<%= @question.kudos.count %></span>&nbsp;&nbsp;&nbsp;
       <span data-tooltip class="has-tip" title="Save this question to your Interview Prep area."><%= link_to favorites_path(question_id: @question.id), class: "fa fa-floppy-o", method: :post do %>
-        <% end %></span><br>
-      <%= @question.favorites.count %><br><br>
+        <% end %>&nbsp;<%= @question.favorites.count %></span>&nbsp;&nbsp;&nbsp;
 
     <% else %>
 
-      <span data-tooltip class="has-tip" title="Sign-in to give this question a thumbs-up."><i class="fa fa-thumbs-up grey-out"></i></span><br>
-      <%= @question.kudos.count %><br><br>
-      <span data-tooltip class="has-tip" title="Sign in to save this question to your interview prep area."><i class="fa fa-floppy-o grey-out"></i></span><br>
-      <%= @question.favorites.count %><br><br>
+      <span data-tooltip class="has-tip" title="Sign-in to give this question a thumbs-up."><i class="fa fa-thumbs-up grey-out"></i>&nbsp;<%= @question.kudos.count %></span>&nbsp;&nbsp;&nbsp;
+      <span data-tooltip class="has-tip" title="Sign in to save this question to your interview prep area."><i class="fa fa-floppy-o grey-out"></i>&nbsp;<%= @question.favorites.count %></span>&nbsp;&nbsp;&nbsp;
 
     <% end %>
-    <span data-tooltip class="has-tip" title="Pageviews"><i class="fa fa-eye"></i></span><br>
-    <%= @question.impressionist_count %><br><br>
+    <span data-tooltip class="has-tip" title="Pageviews"><i class="fa fa-eye"></i>&nbsp;<%= @question.impressionist_count %></span><br><br>
 
-    <%= render partial: "questions/share" %>
 
-  </div>
+    <h3><%= @question.title %>
+    <small><%= render partial: "questions/share" %></small></h3>
+    <hr>
+
+ 
 
     <% if current_user %>
       <% if current_user.id == @question.user.id %>
@@ -71,14 +65,23 @@
   <div class="row">
     <div class="small-12 large-12 columns panel clearfix">
 
-      <div class="left">
-        <span data-tooltip class="has-tip" title="Give this answer a thumbs-up.">
-        <%= link_to kudos_path(question_id: @question.id, answer_id: answer.id), class: "fa fa-thumbs-up", method: :post do %>
-      <% end %></span>
-        <%= answer.kudos.count %>
-      </div>
+
+        <% if current_user %>
+          <span data-tooltip class="has-tip" title="Give this answer a thumbs-up."><%= link_to kudos_path(question_id: @question.id, answer_id: answer.id), class: "fa fa-thumbs-up", method: :post do %><% end %>&nbsp;<%= answer.kudos.count %></span>
+        <% else %>
+          <span data-tooltip class="has-tip" title="Sign-in to give this question a thumbs-up."><i class="fa fa-thumbs-up grey-out"></i>&nbsp;<%= answer.kudos.count %></span>
+        <% end %>
+
+
+
 
       <p><%= markdown answer.content %></p>
+      <hr>
+      <% if current_user %>
+        <% if current_user.id == answer.user_id %>
+        <p class="text-right"><%= link_to "delete", answer_path(answer), method: :delete, class: "button [tiny small large]" %><p>
+        <% end %>
+      <% end %>
       <div class="gravatar-body"><%= gravatar_for(answer.user) %></div>
       <% if answer.user.provider == "github" %>
         <p class="text-right">Posted by: <i class="fa fa-github-square"></i> <%= link_to answer.user.name, "https://github.com/#{answer.user.name}" %><br>
@@ -91,5 +94,6 @@
       <% end %>
     <%= render partial: "comments/show", locals: { answer: answer } %>
     </div>
+
   </div>
 <% end %>
