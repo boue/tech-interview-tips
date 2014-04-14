@@ -14,4 +14,11 @@ $(document).ready(function(){
     $('#thumbs-up-link').addClass('inactive')
   });
 
+  $(".answer-thumbs-up").on("ajax:success", function (e, data, status, xhr) {
+    // alert(data.kudos_count)
+    $('#'+data.id+' .answer-vote').html(data.kudos_count)
+    $('#'+data.id+' .answer-thumbs-up').addClass('grey-out')
+    $('#'+data.id+' .answer-thumbs-up').addClass('inactive')
+  });
+
 });
