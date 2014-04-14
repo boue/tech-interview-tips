@@ -16,9 +16,12 @@ class KudosController < ApplicationController
         @kudo.user_id = current_user.id
         @question.kudos << @kudo
         @kudo.save
+        respond_to do |format|
+          format.json {render json: {kudos_count: @question.kudos.count}}
+          format.html { redirect_to question_path(@question) }
+        end
       end
     end
-    redirect_to question_path(@question)
   end
 
 end

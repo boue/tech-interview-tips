@@ -14,10 +14,13 @@ FactoryGirl.define do
 
   factory :answer do
     content { Faker::Lorem.sentence }
+    user { FactoryGirl.create(:user) }
+    question { FactoryGirl.create(:question) }
   end
 
   factory :comment do
     content { Faker::Lorem.sentence }
+    user { FactoryGirl.create(:user) }
   end
 
 end
