@@ -42,11 +42,46 @@
   margin-left: 10px;
 }
 
-body {
-  background-image:url('https://s3-us-west-1.amazonaws.com/tech-tips/mochaGrunge.png') !important;
-  background-repeat:repeat !important;
+html body {
+  background-image:url('https://s3-us-west-1.amazonaws.com/tech-tips/mochaGrunge.png');
+  background-repeat:repeat;
 }
 
 .grey-out {
   color: rgba(0,0,0,.4);
+}
+
+html h1, h2, h3 {
+    margin-top: 0;
+    padding-top: 0;
+    font-family: 'Candal', sans-serif;
+  }
+
+html .label>a {
+  color: white;
+  text-decoration: none;
+}
+
+.lighten-up {
+  padding: 20px;
+  background-color: rgba(255, 255, 255, .7);
+  text-align: center;
+}
+
+html h5 {
+  margin: 0;
+  padding: 0;
+  margin-top: 40px;
+}
+
+html .gravatar-round {
+width: 100px;
+height: 100px;
+-webkit-border-radius: 50px;
+-moz-border-radius: 50px;
+border-radius: 50px;
+margin: 10px;
+-webkit-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+-moz-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+box-shadow: 0 0 8px rgba(0, 0, 0, .8);
 }
