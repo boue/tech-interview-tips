@@ -1,4 +1,4 @@
-<% content_for :title do %>Technical Interview Questions<% end %>
+<% content_for :title do %>Activity Feed<% end %>
 <style>
   h1 {
     margin-top: 0;
@@ -33,7 +33,6 @@
         <%= " " + time_ago_in_words(action.created_at) + " ago" %>
       </h4>
     <% end %>
-    <hr>
     <%= will_paginate @actions, renderer: FoundationPagination::Rails %>
   </div>
 </div>
