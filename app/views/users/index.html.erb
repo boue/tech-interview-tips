@@ -1,22 +1,25 @@
 <% content_for :title do %>Leaderboard<% end %>
-<h1>Leaderboard</h1>
-<% @users.each do |user| %>
 <div class="row">
   <div class="small-12 large-12 columns panel">
-  <div class="gravatar-body-left"><%= gravatar_for(user) %></div>
-    <% if user.provider == "github" %>
-      <p class="text-left"><i class="fa fa-github-square"></i> <%= link_to user.name, "https://github.com/#{user.name}" %><br>
-    <% else %>
-      <p class="text-left"><i class="fa fa-linkedin-square"></i> <%= link_to user.name, user.url %><br>
-    <% end %>
-    <ul class="text-left">
-      <li><%= "Questions created: " %><%= user.questions.count %></li>
-      <li><%= "Questions answered: " %><%= user.answers.count %></li>
-      <li><%= "Number of comments: " %><%= user.comments.count %></li>
-      <li><%= "Kudos given: " %><%= user.kudos.count %></li>
-    </ul>
-    <%= "Account created " + time_ago_in_words(user.created_at) %> ago</p>
-  </div>
+    <h1>Leaderboard</h1>
   </div>
 </div>
+<% @users.each do |user| %>
+  <div class="row">
+  <div class="small-12 large-12 columns panel clearfix">
+    <div class="gravatar-body-left"><%= gravatar_for(user) %></div>
+      <% if user.provider == "github" %>
+        <p class="text-left"><i class="fa fa-github-square"></i> <%= link_to user.name, "https://github.com/#{user.name}" %><br>
+      <% else %>
+        <p class="text-left"><i class="fa fa-linkedin-square"></i> <%= link_to user.name, user.url %><br>
+      <% end %>
+      <ul class="text-left">
+        <li><%= "Questions created: " %><%= user.questions.count %></li>
+        <li><%= "Questions answered: " %><%= user.answers.count %></li>
+        <li><%= "Number of comments: " %><%= user.comments.count %></li>
+        <li><%= "Kudos given: " %><%= user.kudos.count %></li>
+      </ul>
+      <%= "Account created " + time_ago_in_words(user.created_at) %> ago</p>
+    </div>
+  </div>
 <% end %>
