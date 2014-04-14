@@ -60,7 +60,7 @@
 
 
         <% if current_user %>
-          <span data-tooltip class="has-tip" title="Give this answer a thumbs-up."><%= link_to kudos_path(question_id: @question.id, answer_id: answer.id), class: "fa fa-thumbs-up", method: :post do %><% end %>&nbsp;<%= answer.kudos.count %></span>
+        <span id="<%= answer.id %>" data-tooltip class="has-tip" title="Give this answer a thumbs-up."><%= link_to kudos_path(question_id: @question.id, answer_id: answer.id), class: "fa fa-thumbs-up answer-thumbs-up", :remote => true, method: :post do %><% end %>&nbsp;<span class="answer-vote"><%= answer.kudos.count %></span></span>
         <% else %>
           <span data-tooltip class="has-tip" title="Sign-in to give this question a thumbs-up."><i class="fa fa-thumbs-up grey-out"></i>&nbsp;<%= answer.kudos.count %></span>
         <% end %>

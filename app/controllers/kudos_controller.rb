@@ -9,9 +9,12 @@ class KudosController < ApplicationController
         @kudo.user_id = current_user.id
         @answer.kudos << @kudo
         @kudo.save
+        respond_to do |format|
+          format.json {render json: {id: @answer.id, kudos_count: @answer.kudos.count}}
+          format.html { redirect_to question_path(@question) }
+        end
       end
     else
-      @question = Question.find(params[:question_id])
       if @question.kudos.where(user_id: current_user.id).count == 0
         @kudo.user_id = current_user.id
         @question.kudos << @kudo
