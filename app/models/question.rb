@@ -3,17 +3,11 @@ class Question < ActiveRecord::Base
   has_many :favorites, as: :favoritable
   has_many :kudos, as: :kudosible
   has_many :comments, as: :commentable, dependent: :destroy
-
   belongs_to :user
-
-  acts_as_taggable
-
   validates :title, presence: true
-
   after_create :create_action
-
+  acts_as_taggable
   is_impressionable
-
   default_scope -> { order('created_at DESC') }
 
   extend FriendlyId
@@ -35,7 +29,7 @@ class Question < ActiveRecord::Base
   def create_action
     Action.create(
       actionable: self,
-      content: 'New question:',
+      content: 'Question:',
       user: User.find(self.user_id)
     )
   end

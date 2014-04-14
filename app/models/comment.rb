@@ -11,7 +11,7 @@ class Comment < ActiveRecord::Base
   def create_action
     Action.create(
       actionable: self,
-      content: 'New comment:',
+      content: 'Comment',
       user: User.find(self.user_id)
     )
   end
