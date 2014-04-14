@@ -13,4 +13,6 @@ describe "Options when not logged in", :type => :feature do
     expect(current_path).to eq('/')
   end
 
+# need to add capybara tests with stubbing of user logged it, to test other features
+
 end
