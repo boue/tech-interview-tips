@@ -28,13 +28,16 @@
     <h3>My Activity Feed</h3>
     <ul>
     <% Action.where(user_id: current_user.id, actionable_type: "Question").each do |action| %>
-      <li><%= link_to action.actionable.title, question_path(action.actionable) %><%= " created by " %> <%= link_to User.find(action.user_id).name, user_path(User.find(action.user_id)) %><%= " " +time_ago_in_words(action.created_at) + " ago" %></li>
+      <li><%= action.content + " " %><%= link_to action.actionable.title, question_path(action.actionable) %><%= " created by " %> <%= link_to User.find(action.user_id).name, user_path(User.find(action.user_id)) %><%= " " +time_ago_in_words(action.created_at) + " ago" %></li>
     <% end %>
     <% Action.where(user_id: current_user.id, actionable_type: "Answer").each do |action| %>
-      <li><%= link_to action.actionable.content, question_path(Question.find(action.actionable.question_id)) %><%= " created by " %> <%= link_to User.find(action.user_id).name, user_path(User.find(action.user_id)) %><%= " " +time_ago_in_words(action.created_at) + " ago" %></li>
+      <li><%= action.content + " " %><%= link_to action.actionable.content, question_path(Question.find(action.actionable.question_id)) %><%= " created by " %> <%= link_to User.find(action.user_id).name, user_path(User.find(action.user_id)) %><%= " " +time_ago_in_words(action.created_at) + " ago" %></li>
     <% end %>
     <% Action.where(user_id: current_user.id, actionable_type: "Comment").each do |action| %>
-      <li><%= link_to action.actionable.content, question_path(Question.find(action.actionable.commentable.question_id)) %><%= " created by " %> <%= link_to User.find(action.user_id).name, user_path(User.find(action.user_id)) %><%= " " +time_ago_in_words(action.created_at) + " ago" %></li>
+      <li><%= action.content + " " %><%= link_to action.actionable.content, question_path(Question.find(action.actionable.commentable.question_id)) %><%= " created by " %> <%= link_to User.find(action.user_id).name, user_path(User.find(action.user_id)) %><%= " " +time_ago_in_words(action.created_at) + " ago" %></li>
+    <% end %>
+    <% Action.where(user_id: current_user.id, actionable_type: "Kudo").each do |action| %>
+      <li><%= "You gave a " + action.content + " on " %><%= link_to action.actionable.kudosible.title, question_path(Question.find(action.actionable.kudosible)) %><%= " " +time_ago_in_words(action.created_at) + " ago" %></li>
     <% end %>
     </ul>
   </div>
