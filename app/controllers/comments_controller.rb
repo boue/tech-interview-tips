@@ -16,6 +16,8 @@ class CommentsController < ApplicationController
     answer.comments << comment
     if comment.save
       redirect_to question_path(question)
+    else
+      redirect_to question_path(question), flash: { notice: "Comment can't be blank."}
     end
   end
 
