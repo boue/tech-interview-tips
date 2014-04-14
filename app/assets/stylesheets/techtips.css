@@ -47,7 +47,7 @@ html body {
   background-repeat:repeat;
 }
 
-.grey-out {
+html .grey-out {
   color: rgba(0,0,0,.4);
 }
 
@@ -84,4 +84,9 @@ margin: 10px;
 -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
 -moz-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
 box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+}
+
+html .inactive {
+   pointer-events: none;
+   cursor: default;
 }
