@@ -5,7 +5,7 @@ TechInterviewTips::Application.routes.draw do
   resources :comments
   resources :kudos, only: [:create]
   resources :favorites, only: [:create]
-  resources :users, only: [:show]
+  resources :users, only: [:index, :show]
   resources :actions, only: [:index]
 
 
