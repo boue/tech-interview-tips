@@ -22,5 +22,4 @@ FactoryGirl.define do
     content { Faker::Lorem.sentence }
     user { FactoryGirl.create(:user) }
   end
-
 end
