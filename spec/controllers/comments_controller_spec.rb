@@ -31,14 +31,14 @@ describe CommentsController do
       (response.body).should_not include @comment
     end
 
-    it "reduces comment count by 1" do
+    it "doesn't redirect if comment is not deleted correctly" do
       p fake_comment
       p "$" * 100
       p Comment.count
       p fake_comment.id
       expect{
-          delete :destroy, id: fake_comment.id, question_id: fake_comment.question_id
-          }.to change{ Comment.count }.by(-1)
+          delete :destroy, id: fake_comment.id, comment: fake_comment
+          }.not_to redirect_to("/")
           # seperate test response.status.should be(200)
     end
   end
