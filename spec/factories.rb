@@ -22,4 +22,8 @@ FactoryGirl.define do
     user { FactoryGirl.create(:user) }
     association :commentable, factory: :question
   end
+
+  factory :favorite do
+    user { FactoryGirl.create(:user) }
+  end
 end
