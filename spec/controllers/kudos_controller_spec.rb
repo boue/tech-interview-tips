@@ -1,15 +1,10 @@
 require 'spec_helper'
 
 describe KudosController do
-  # before(:each) { KudosController.any_instance.stub(:check_current_user)
-   # }
+  before(:each) { KudosController.any_instance.stub(:check_current_user)
+   }
 
   context "#create" do
-
-    # before :each do
-    #   new_user = FactoryGirl.create(:user)
-    #   new_answer = FactoryGirl.create(:answer)
-    # end
 
     context "when an answer is given" do
       before :each do
