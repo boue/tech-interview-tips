@@ -13,4 +13,10 @@ class FavoritesController < ApplicationController
       format.html { redirect_to question_path(question) }
     end
   end
+
+  def destroy
+    favorite = Favorite.find(params[:favorite_id])
+    favorite.destroy
+    redirect_to user_path(User.find(params[:id]))
+  end
 end
