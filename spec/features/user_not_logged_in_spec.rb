@@ -1,3 +1,4 @@
+require 'spec_helper'
 
 describe "Options when not logged in", :type => :feature do
 
@@ -15,13 +16,13 @@ describe "Options when not logged in", :type => :feature do
 
 end
 
-describe "Authorization", type => :feature do
+describe "Authorization", :js => true do
 
   it "let's user login and shows logout link" do
     visit '/'
     click_link('Sign in')
-    click_link('Using GitHub')
-    page.should have_link "Logout"
+    find_link('Using GitHub').click_link('Using GitHub')
+    expect(page).to have_content "Sign out"
 
     # example for waiting
     # find("href").click_link("baz")
