@@ -9,10 +9,12 @@ class AnswersController < ApplicationController
   end
 
   def create
+    user = User.find(current_user.id)
     question = Question.find(params[:answer][:question_id])
     answer = Answer.new(answer_params)
+    user.answers << answer
     question.answers << answer
-    answer.user_id = current_user.id
+    # answer.user_id = current_user.id
     if answer.save
       redirect_to question_path(question)
     else
