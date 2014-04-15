@@ -1,8 +1,9 @@
 class Question < ActiveRecord::Base
   has_many :answers, dependent: :destroy
   has_many :favorites, as: :favoritable
-  has_many :kudos, as: :kudosible
+  has_many :kudos, as: :kudosible, dependent: :destroy
   has_many :comments, as: :commentable, dependent: :destroy
+  has_many :actions, as: :actionable, dependent: :destroy
   belongs_to :user
   validates :title, presence: true
   after_create :create_action
