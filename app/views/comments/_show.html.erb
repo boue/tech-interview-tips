@@ -6,7 +6,7 @@
       <p class="text-right"><%= link_to "delete", comment_path(comment), method: :delete, class: "button [tiny small large]" %></p>
     <% end %>
   <% end %>
-  <% user = User.find(comment.commentable.user_id) %>
+  <% user = User.find(comment.user_id) %>
   <div class="gravatar-body"><%= gravatar_for(user) %></div>
   <% if user.provider == "github" %>
     <p class="text-right">Posted by: <i class="fa fa-github-square"></i> <%= link_to user.name, "https://github.com/#{user.name}" %><br>
