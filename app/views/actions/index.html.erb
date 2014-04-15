@@ -5,7 +5,7 @@
     <% @actions.each do |action| %>
       <hr>
       <h4>
-        <%= action.content %>
+        <%= action.actionable_type + " - " + action.content %>
 
         <div class="gravatar-body"><%= gravatar_for(User.find(action.user_id)) %></div>
 
