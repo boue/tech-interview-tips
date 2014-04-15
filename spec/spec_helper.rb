@@ -52,6 +52,9 @@ OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new({
   :email => 'mailme@gmail.com'
   })
 
+def create_omniauth_user
+  @user = User.create(provider: 'github', uid: '1234567', name: 'johnsmith', email: 'mailme@gmail.com')
+end
 
 
 
