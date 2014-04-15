@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :check_current_user, only: [:show]
 
   def index
-    @users = User.find(:all).sort{|u1,u2| u2.questions.count <=> u1.questions.count }
+    @users = User.find(:all).sort{|u1,u2| u2.answers.count <=> u1.answers.count }
   end
 
   def show
