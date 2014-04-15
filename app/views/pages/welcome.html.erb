@@ -6,9 +6,20 @@
     <h1>Tech Interview Tips</h1>
     <p>This is the place to learn ways to answer technical interview questions, and the place to share your knowledge with others.</p>
     <p>
-    <%= link_to "View Questions", questions_path, class: "button [tiny small large]" %><br>
+    <%= link_to "View Questions", questions_path, class: "button [tiny small large]" %> <a href="#" data-reveal-id="cloudModal" class="button [tiny small large]">Filter by Tag</a><br>
     <%= link_to "Post a Question", new_question_path, class: "button [tiny small large]" %>
       </p>
     </div>
   </div>
+</div>
+
+
+<div id="cloudModal" class="reveal-modal small" data-reveal>
+  <h2>Tag Cloud</h2>
+  <p id="tag_cloud">
+    <% tag_cloud Question.tag_counts, %w[s m l] do |tag, css_class| %>
+      <%= link_to tag.name, tag_path(tag.name), class: css_class %>
+    <% end %>
+  </p>
+  <a class="close-reveal-modal">&#215;</a>
 </div>
