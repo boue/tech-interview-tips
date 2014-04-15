@@ -13,4 +13,8 @@ class FavoritesController < ApplicationController
       format.html { redirect_to question_path(question) }
     end
   end
+
+  def destroy
+    @favorite = Favorite.find()
+  end
 end

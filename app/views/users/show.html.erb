@@ -7,11 +7,14 @@
     <h1>Interview Prep</h1>
     <h3>for <%= @user.name %></h3>
   <p>Click the <i class="fa fa-floppy-o"></i> icon next to a question so that it will appear here for future reference.</p>
+  <p>Click the <i class="fa fa-eraser"></i> icon next to a question to remove it from your Interview Prep area.</p>
     <% if current_user.id == @user.id %>
       <% @user.favorites.each do |favorite| %>
       <hr>
       <div class="row">
         <div class="small-12 large-12 columns">
+          <span data-tooltip class="has-tip" title="Click to erase favorite"><%= link_to favorite_path(question_id: favorite.favoritable.id), class: "fa fa-eraser", :remote => true, :id => "erase-link", method: :delete do %>
+          <% end %>
           <%= link_to favorite.favoritable.title, question_path(favorite.favoritable) %><br>
         </div>
       </div>
