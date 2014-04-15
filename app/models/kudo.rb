@@ -8,7 +8,7 @@ class Kudo < ActiveRecord::Base
   def create_action
     Action.create(
       actionable: self,
-      content: 'thumbs up',
+      content: '',
       user: User.find(self.user_id)
     )
   end

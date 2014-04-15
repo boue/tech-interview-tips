@@ -29,7 +29,7 @@ class Question < ActiveRecord::Base
   def create_action
     Action.create(
       actionable: self,
-      content: 'Question:',
+      content: self.title,
       user: User.find(self.user_id)
     )
   end
