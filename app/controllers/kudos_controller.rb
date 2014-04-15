@@ -2,8 +2,8 @@ class KudosController < ApplicationController
 
   def create
     @kudo = Kudo.new
-    @question = Question.find(params[:question_id])
     if params[:answer_id]
+      @question = Question.find(params[:question_id])
       @answer = Answer.find(params[:answer_id])
       if @answer.kudos.where(user_id: current_user.id).count == 0
         @kudo.user_id = current_user.id
@@ -14,7 +14,8 @@ class KudosController < ApplicationController
           format.html { redirect_to question_path(@question) }
         end
       end
-    else
+    elsif params[:question_id]
+      @question = Question.find(params[:question_id])
       if @question.kudos.where(user_id: current_user.id).count == 0
         @kudo.user_id = current_user.id
         @question.kudos << @kudo
@@ -24,6 +25,8 @@ class KudosController < ApplicationController
           format.html { redirect_to question_path(@question) }
         end
       end
+    else
+      redirect_to root_path, flash: { notice: "Kudos create was unsuccessful" }
     end
   end
 
