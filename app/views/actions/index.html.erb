@@ -6,19 +6,15 @@
       <hr>
       <h4>
         <%= action.content %>
-        <% if action.actionable_type == "Question" %>
-          <%= link_to action.actionable.title, question_path(action.actionable) %>
-        <% end %>
+
         <div class="gravatar-body"><%= gravatar_for(User.find(action.user_id)) %></div>
-        <% if action.actionable_type == "Answer" %>
-          <%= action.actionable.content %>
-        <% end %>
 
         <% if User.find(action.user_id).provider == "github" %>
           <p class="text-right">Posted by: <i class="fa fa-github-square"></i> <%= link_to User.find(action.user_id).name, "https://github.com/#{User.find(action.user_id).name}" %><br>
         <% else %>
           <p class="text-right">Posted by: <i class="fa fa-linkedin-square"></i> <%= link_to User.find(action.user_id).name, User.find(action.user_id).url %><br>
         <% end %>
+
         <%= " " + time_ago_in_words(action.created_at) + " ago" %>
       </h4>
     <% end %>
