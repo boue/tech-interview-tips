@@ -1,0 +1,31 @@
+<% content_for :title do %>Leaderboard<% end %>
+<div class="row">
+  <div class="small-12 large-12 columns panel">
+    <h1>Leaderboard</h1>
+  </div>
+</div>
+<% @users.each do |user| %>
+  <!-- <div class="row">
+  <div class="small-12 large-12 columns panel clearfix"> -->
+  <div class="row panel">
+  <div class="medium-3 columns text-left">
+    <div class="gravatar-body-left"><%= gravatar_for(user) %></div>
+      <% if user.provider == "github" %>
+        <p class="text-left"><i class="fa fa-github-square"></i> <%= link_to user.name, "https://github.com/#{user.name}" %><br>
+      <% else %>
+        <p class="text-left"><i class="fa fa-linkedin-square"></i> <%= link_to user.name, user.url %><br>
+      <% end %>
+      <%= "Account created " + time_ago_in_words(user.created_at) %> ago</p>
+    </div>
+      <!-- <div class="row panel"> -->
+      <!-- <div class="large-9 columns text-center"> -->
+      <ul class="text-right">
+        <%= "Questions created: " %><%= user.questions.count %><br>
+        <%= "Questions answered: " %><%= user.answers.count %><br>
+        <%= "Number of comments: " %><%= user.comments.count %><br>
+        <%= "Kudos given: " %><%= user.kudos.count %>
+      </ul>
+  </div>
+    </div>
+  </div>
+<% end %>
