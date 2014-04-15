@@ -15,7 +15,7 @@ class Answer < ActiveRecord::Base
   def create_action
     Action.create(
       actionable: self,
-      content: 'Answer:',
+      content: self.content,
       user: User.find(Question.find(self.question_id).user_id)
     )
   end
