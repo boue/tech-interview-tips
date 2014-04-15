@@ -4,16 +4,6 @@
   font-weight: 400;
 }
 
-.img-container {
-  height: 100%;
-  margin: 0 auto;
-  background: url(https://s3-us-west-1.amazonaws.com/tech-tips/unsplash_52b6b4db7397c_1.JPG) no-repeat center center fixed;
-  -moz-background-size: cover;
-  -webkit-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-}
-
 .clear {
   clear: both;
 }
@@ -97,3 +87,29 @@ html #tag_cloud {
   .m { font-size: 1.2em; }
   .l { font-size: 1.8em; }
 }
+
+/* max-width 640px, mobile-only styles */
+@media only screen and (max-width: 40em) { 
+  .img-container {
+    height: 100%;
+    margin: 0 auto;
+    background: url(https://s3-us-west-1.amazonaws.com/tech-tips/unsplash_52b6b4db7397c_sm.jpg) no-repeat center center fixed;
+    -moz-background-size: cover;
+    -webkit-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+} 
+
+/* min-width 641px, medium screens */
+@media only screen and (min-width: 40.063em) { 
+  .img-container {
+    height: 100%;
+    margin: 0 auto;
+    background: url(https://s3-us-west-1.amazonaws.com/tech-tips/unsplash_52b6b4db7397c_1.JPG) no-repeat center center fixed;
+    -moz-background-size: cover;
+    -webkit-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+} 
