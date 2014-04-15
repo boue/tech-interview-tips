@@ -15,6 +15,19 @@ class FavoritesController < ApplicationController
   end
 
   def destroy
-    @favorite = Favorite.find()
+    # p params
+    # p "Question id"
+    # p params[:question_id]
+    # question = Question.find(params[:question_id])
+    # p question
+    # question.favorites.each do |favorite|
+    #   if favorite.favoritable.user_id == params[:id]
+    #     favorite.destroy
+    #   end
+    # end
+    favorite = Favorite.find(params[:favorite_id])
+    favorite.destroy
+    redirect_to user_path(User.find(params[:id]))
+
   end
 end

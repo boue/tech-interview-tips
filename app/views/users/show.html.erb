@@ -13,7 +13,7 @@
       <hr>
       <div class="row">
         <div class="small-12 large-12 columns">
-          <span data-tooltip class="has-tip" title="Click to erase favorite"><%= link_to favorite_path(question_id: favorite.favoritable.id), class: "fa fa-eraser", :remote => true, :id => "erase-link", method: :delete do %>
+          <span data-tooltip class="has-tip" title="Click to erase favorite"><%= link_to favorite_path(question_id: favorite.favoritable.id, favorite_id: favorite.id), class: "fa fa-eraser", :id => "erase-link", method: :delete do %>
           <% end %>
           <%= link_to favorite.favoritable.title, question_path(favorite.favoritable) %><br>
         </div>
