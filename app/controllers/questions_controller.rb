@@ -33,7 +33,7 @@ class QuestionsController < ApplicationController
     if @question.save
       redirect_to question_path(@question)
     else
-      require "pry"; binding.pry
+      # require "pry"; binding.pry
       render :new
     end
   end
