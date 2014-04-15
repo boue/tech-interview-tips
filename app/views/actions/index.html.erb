@@ -13,13 +13,10 @@
           <%= link_to action.content, question_path(action.actionable.question) %>
         <% end %>
         <% if action.actionable_type == "Comment" %>
-          <%= link_to action.content, question_path(action.actionable.commentable.question) %>
+          <%= action.content %>
         <% end %>
-        <% if action.actionable_type == "Kudo" && action.actionable.kudosible_type == "Question" %>
-          <%= link_to action.actionable.kudosible.title, question_path(action.actionable.kudosible) %>
-        <% end %>
-        <% if action.actionable_type == "Kudo" && action.actionable.kudosible_type == "Answer" %>
-          <%= link_to action.actionable.kudosible.content, question_path(action.actionable.kudosible.question) %>
+        <% if action.actionable_type == "Kudo" %>
+          <%= "Thumbs up" %>
         <% end %>
 
         <div class="gravatar-body"><%= gravatar_for(User.find(action.user_id)) %></div>
