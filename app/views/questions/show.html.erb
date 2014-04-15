@@ -21,10 +21,10 @@
 
 
     <h3><%= @question.title %>
-    <small><%= render partial: "questions/share" %></small></h3>
+    <%= render partial: "questions/share" %></h3>
     <hr>
 
- 
+
 
     <% if current_user %>
       <% if current_user.id == @question.user.id %>
