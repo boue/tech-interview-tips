@@ -9,7 +9,20 @@ class Question < ActiveRecord::Base
   after_create :create_action
   acts_as_taggable
   is_impressionable
-  default_scope -> { order('created_at DESC') }
+  # default_scope -> { order('created_at DESC') }
+
+  scope :unanswered,
+    select("questions.id, title, slug")
+    joins(:answers).
+    where("answer.id IS NULL")
+    order("question.created_at DESC")
+
+  scope :most_answered,
+    select("questions.id, title, slug, count(answers.id) AS answers_count").
+    joins(:answers).
+    group("questions.id").
+    order("answers_count DESC")
+
 
   extend FriendlyId
   friendly_id :title, use: [:slugged, :history]
