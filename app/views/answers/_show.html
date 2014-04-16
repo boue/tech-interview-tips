@@ -1,4 +1,18 @@
-<p><%= markdown answer.content %></p>
+<div class="row">
+  <div class="small-12 large-12 columns panel clearfix">
+
+      <% if current_user %>
+        <% unless answer.kudos.find_by(user_id: current_user.id) %>
+          <span id="<%= answer.id %>" data-tooltip class="has-tip" title="Give this answer a thumbs-up."><%= link_to kudos_path(question_id: @question.id, answer_id: answer.id), class: "fa fa-thumbs-up answer-thumbs-up", :remote => true, method: :post do %><% end %>
+        <% else %>
+          <span data-tooltip class="has-tip" title="You have given this answer a thumbs-up."><i class="fa fa-thumbs-up grey-out"></i>
+        <% end %>
+        &nbsp;<span class="answer-vote"><%= answer.kudos.count %></span></span>
+      <% else %>
+        <span data-tooltip class="has-tip" title="Sign-in to give this question a thumbs-up."><i class="fa fa-thumbs-up grey-out"></i>&nbsp;<%= answer.kudos.count %></span>
+      <% end %>
+
+  <p><%= markdown answer.content %></p>
 <hr>
 <% if current_user %>
   <% if current_user.id == answer.user_id %>
@@ -13,4 +27,19 @@
     <p class="text-right">Posted by: <i class="fa fa-linkedin-square"></i> <%= link_to answer.user.name, answer.user.url %><br>
   <% end %>
       <%= time_ago_in_words(answer.created_at) %> ago</p>
+
+    <% if current_user %>
+  <%= render partial: "comments/new", locals: { question: @question, answer: answer } %>
+    <% end %>
+  <%= render partial: "comments/show", locals: { answer: answer } %>
+  </div>
+</div>
+
+
+
+
+
+
+
+
 
