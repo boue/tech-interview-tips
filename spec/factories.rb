@@ -27,4 +27,10 @@ FactoryGirl.define do
     user { FactoryGirl.create(:user) }
   end
 
+  factory :action do |action|
+    content { Faker::Lorem.sentence }
+    user { FactoryGirl.create(:user) }
+    action.actionable { |a| a.association(:question) }
+  end
+
 end
