@@ -13,7 +13,6 @@ class Kudo < ActiveRecord::Base
   end
 
   private
-
   def create_action
     Action.create(
       actionable: self,
@@ -21,5 +20,4 @@ class Kudo < ActiveRecord::Base
       user: User.find(self.user_id)
     )
   end
-
 end

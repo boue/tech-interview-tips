@@ -1,5 +1,5 @@
 <% unless @question.kudos.find_by(user_id: current_user.id) %>
-  <span data-tooltip class="has-tip" title="Give this question a thumbs-up."><%= link_to kudos_path(question_id: @question.id), class: "fa fa-thumbs-up", :remote => true, :id => "thumbs-up-link", method: :post do %>
+  <span data-tooltip class="has-tip" title="Give this question a thumbs-up."><%= link_to kudos_path(question_id: @question.id, kudosible_type: "Question"), class: "fa fa-thumbs-up", :remote => true, :id => "thumbs-up-link", method: :post do %>
   <% end %>
 <% else %>
   <span data-tooltip class="has-tip" title="You have given this question a thumbs-up."><i class="fa fa-thumbs-up grey-out"></i>

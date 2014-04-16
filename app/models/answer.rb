@@ -1,4 +1,5 @@
 class Answer < ActiveRecord::Base
+  include CreateAction
   belongs_to :question
   belongs_to :user
   belongs_to :category
@@ -7,18 +8,6 @@ class Answer < ActiveRecord::Base
   has_many :comments, as: :commentable, dependent: :destroy
   has_many :actions, as: :actionable, dependent: :destroy
   validates :content, presence: true
-  after_create :create_action
+  after_create :create_action_with_content
   default_scope -> { order('created_at DESC') }
-
-
-  private
-
-  def create_action
-    Action.create(
-      actionable: self,
-      content: self.content,
-      user: User.find(self.user_id)
-    )
-  end
-
 end
