@@ -2,3 +2,4 @@
       <% end %>&nbsp;<span id="thumbs-up-count"><%= @question.kudos.count %></span></span>&nbsp;&nbsp;&nbsp;
       <span data-tooltip class="has-tip" title="Save this question to your Interview Prep area."><%= link_to favorites_path(question_id: @question.id), class: "fa fa-floppy-o", :remote => true, :id => "save-link", method: :post do %>
         <% end %>&nbsp;<span id="save-count"><%= @question.favorites.count %></span></span>&nbsp;&nbsp;&nbsp;
+

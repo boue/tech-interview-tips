@@ -1,13 +1,14 @@
-<% @answers.each do |answer| %>
-  <div class="row">
-    <div class="small-12 large-12 columns panel">
-      <p><%= markdown answer.content %></p>
+<p><%= markdown answer.content %></p>
+<hr>
+<% if current_user %>
+        <% if current_user.id == answer.user_id %>
+        <p class="text-right"><%= link_to "delete", answer_path(answer), method: :delete, class: "button [tiny small large]" %><p>
+        <% end %>
+      <% end %>
+      <div class="gravatar-body"><%= gravatar_for(answer.user) %></div>
       <% if answer.user.provider == "github" %>
-        <p class="text-right">Posted by: <%= link_to answer.user.name, "https://github.com/#{answer.user.name}" %><br>
+        <p class="text-right">Posted by: <i class="fa fa-github-square"></i> <%= link_to answer.user.name, "https://github.com/#{answer.user.name}" %><br>
       <% else %>
-        <p class="text-right">Posted by: <%= answer.user.name %><br>
+        <p class="text-right">Posted by: <i class="fa fa-linkedin-square"></i> <%= link_to answer.user.name, answer.user.url %><br>
       <% end %>
       <%= time_ago_in_words(answer.created_at) %> ago</p>
-    </div>
-  </div>
-<% end %>
