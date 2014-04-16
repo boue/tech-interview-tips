@@ -6,14 +6,16 @@ class QuestionsController < ApplicationController
 
   def index 
     if params[:tag]
-      @questions = Question.all
+      @questions = Question.most_answered
       @questions = @questions.tagged_with(params[:tag])
       @questions = @questions.paginate(:page => params[:page], :per_page => 10)
     elsif params[:search]  
-      @questions = Question.paginate(:page => params[:page], :per_page => 10)
+      @questions = Question.most_answered.paginate(:page => params[:page], :per_page => 10)
       @questions = @questions.search(params[:search])
+    elsif params[:answered]
+      @questions = Question.unanswered.paginate(:page => params[:page], :per_page => 10)
     else
-      @questions = Question.all
+      @questions = Question.most_answered
       @questions = @questions.paginate(:page => params[:page], :per_page => 10)
     end
   end
