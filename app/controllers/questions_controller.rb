@@ -4,6 +4,18 @@ class QuestionsController < ApplicationController
   before_action :check_current_user, only: [:new, :edit, :update, :destroy ]
   impressionist actions: [:show]
 
+# When I search for 'ruby' then I expect to see questions with the text 'ruby'
+# in order of most answered.
+
+# When I search for tag of 'ruby' then I expect to see questions with the 
+# tag of ruby in order of most answered.
+
+# When I go to 'questions/answered=false' then I expect to see questions that
+# don't have answers
+
+# when I go to all questions '/questions' I expect to see all questions with
+# answers
+
   def index 
     if params[:tag]
       @questions = Question.most_answered
@@ -12,7 +24,7 @@ class QuestionsController < ApplicationController
     elsif params[:search]  
       @questions = Question.most_answered.paginate(:page => params[:page], :per_page => 10)
       @questions = @questions.search(params[:search])
-    elsif params[:answered]
+    elsif params[:unanswered]
       @questions = Question.unanswered.paginate(:page => params[:page], :per_page => 10)
     else
       @questions = Question.most_answered
