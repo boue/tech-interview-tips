@@ -85,20 +85,13 @@ describe CommentsController do
           user_id: @current_user.id
         }
       }
-
-      @kill_this = post(:create, @comment_params)
     end
+
 
     xit "should delete a comment" do
-      comment = Comment.find(@kill_this.id)
-      expect { comment.destroy }.to change{Comment.count}.by(-1)
-    end
-
-    it "doesn't redirect if comment is not deleted correctly" do
-      expect{
-          delete :destroy, id: fake_comment.id, comment: fake_comment
-          }.not_to redirect_to("/")
-          # seperate test response.status.should be(200)
+      let!(:kill_this){ post(:create, @comment_params) }
+      # require 'pry'; binding.pry
+      expect { delete :destroy, :id => kill_this.id }.to change{ Comment.count }.by(-1)
     end
   end
 

@@ -1,5 +1,6 @@
 require 'spec_helper'
 
+
 describe KudosController do
   context "#create" do
     before :each do
