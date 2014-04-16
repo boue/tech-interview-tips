@@ -5,7 +5,22 @@
     <% @actions.each do |action| %>
       <hr>
       <h4>
-        <%= action.actionable_type + " - " + action.content %>
+        <%= action.actionable_type + " - " %>
+        <% if action.actionable_type == "Question" %>
+          <%= link_to action.content, question_path(action.actionable) %>
+        <% end %>
+        <% if action.actionable_type == "Answer" %>
+          <%= link_to action.content, question_path(action.actionable.question) %>
+        <% end %>
+        <% if action.actionable_type == "Comment" %>
+          <%= link_to action.content, question_path(action.actionable.commentable.question) %>
+        <% end %>
+        <% if action.actionable_type == "Kudo" && action.actionable.kudosible_type == "Question" %>
+          <%= link_to action.actionable.kudosible.title, question_path(action.actionable.kudosible) %>
+        <% end %>
+        <% if action.actionable_type == "Kudo" && action.actionable.kudosible_type == "Answer" %>
+          <%= link_to action.actionable.kudosible.content, question_path(action.actionable.kudosible.question) %>
+        <% end %>
 
         <div class="gravatar-body"><%= gravatar_for(User.find(action.user_id)) %></div>
 

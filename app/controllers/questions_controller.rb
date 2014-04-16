@@ -26,13 +26,14 @@ class QuestionsController < ApplicationController
     @question = Question.new
   end
 
-  def create
+  def create 
     @user = User.find(current_user.id)
     @question = Question.new(question_params)
     @user.questions << @question
     if @question.save
       redirect_to question_path(@question)
     else
+      # require "pry"; binding.pry
       render :new
     end
   end

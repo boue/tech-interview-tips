@@ -2,7 +2,12 @@
 <div class="row">
   <div class="small-12 large-12 columns panel">
     <h1>Technical Interview Questions</h1>
-    <%= link_to "Post a Question", new_question_path, class: "button [tiny small large]" %>
+    <p id="tag_cloud"><strong>Filter by Tag:</strong>
+      <% tag_cloud Question.tag_counts, %w[s m l] do |tag, css_class| %>
+        <%= link_to tag.name, tag_path(tag.name), class: css_class %>
+      <% end %>
+    </p>
+   <%= link_to "Post a Question", new_question_path, class: "button [tiny small large]" %>
     <% @questions.each do |question| %>
       <hr>
       <h4><%= link_to question.title, question_path(question) %></h4>
