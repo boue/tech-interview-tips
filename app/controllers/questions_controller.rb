@@ -7,7 +7,7 @@ class QuestionsController < ApplicationController
 # When I search for 'ruby' then I expect to see questions with the text 'ruby'
 # in order of most answered.
 
-# When I search for tag of 'ruby' then I expect to see questions with the 
+# When I search for tag of 'ruby' then I expect to see questions with the
 # tag of ruby in order of most answered.
 
 # When I go to 'questions/answered=false' then I expect to see questions that
@@ -16,12 +16,12 @@ class QuestionsController < ApplicationController
 # when I go to all questions '/questions' I expect to see all questions with
 # answers
 
-  def index 
+  def index
     if params[:tag]
       @questions = Question.most_answered
       @questions = @questions.tagged_with(params[:tag])
       @questions = @questions.paginate(:page => params[:page], :per_page => 10)
-    elsif params[:search]  
+    elsif params[:search]
       @questions = Question.most_answered.paginate(:page => params[:page], :per_page => 10)
       @questions = @questions.search(params[:search])
     elsif params[:unanswered]
@@ -40,7 +40,7 @@ class QuestionsController < ApplicationController
     @question = Question.new
   end
 
-  def create 
+  def create
     @user = User.find(current_user.id)
     @question = Question.new(question_params)
     @user.questions << @question

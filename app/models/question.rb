@@ -39,5 +39,4 @@
       find(:all)
     end
   end
-
 end
