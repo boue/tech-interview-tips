@@ -61,6 +61,11 @@ describe CommentsController do
       comment = Comment.new
       expect { post(:create, @comment_params2) }.to change{ Comment.count }.by(0)
     end
+
+    it "should create a new action when a new comment is created" do
+      comment = Comment.new
+      expect { post(:create, @comment_params) }.to change{Action.count}.by(1)
+    end
   end
 
   context "destroy" do

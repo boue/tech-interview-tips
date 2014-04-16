@@ -16,7 +16,7 @@ describe KudosController do
         @answer_params = { answer_id: @new_answer.id,
                            user_id: @current_user.id,
                            kudosible_id: @new_answer.id,
-                           kudosible_type: "answer" }    
+                           kudosible_type: "answer" }
       end
       context "when the current user kudos an answer" do
         it "creates a new kudo for an unkudo-ed answer" do
@@ -29,6 +29,10 @@ describe KudosController do
           @new_answer.kudos << kudo
           kudo.save
           expect { post :create, @answer_params }.to change { Kudo.count }.by(0)
+        end
+
+        it "creates a new action when a new kudo is given" do
+          expect { post :create, @answer_params }.to change { Action.count }.by(1)
         end
       end
     end
