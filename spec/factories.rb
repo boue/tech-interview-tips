@@ -23,4 +23,8 @@ FactoryGirl.define do
     user { FactoryGirl.create(:user) }
   end
 
+  factory :favorite do
+    user { FactoryGirl.create(:user) }
+  end
+
 end
