@@ -24,18 +24,33 @@ describe CommentsController do
     end
   end
 
+  context "#create" do
+    let!(:question) { FactoryGirl.create :question }
+    let!(:answer) { FactoryGirl.create :answer }
+    let!(:comment) { FactoryGirl.create :comment }
+    xit "should create a new comment" do
+    @user = FactoryGirl.create :user
+
+    p "%" * 1000
+    p comment.commentable
+    # p @user
+    # p question
+    # p question.id.to_s
+    # p answer
+    # p question.answers.find_by_question_id(question_id)
+      expect {
+        FavoritesController.any_instance.stub(:current_user).and_return(@user)
+        post(:create, comment: comment.id )}.to change{Comment.count}.by(1)
+    end
+  end
+
   context "destroy" do
     before(:each) { get :show, id: fake_comment.id }
-    it "does not include comment in body" do
-      # p @comment
+    xit "does not include comment in body" do
       (response.body).should_not include @comment
     end
 
     it "doesn't redirect if comment is not deleted correctly" do
-      p fake_comment
-      p "$" * 100
-      p Comment.count
-      p fake_comment.id
       expect{
           delete :destroy, id: fake_comment.id, comment: fake_comment
           }.not_to redirect_to("/")
@@ -74,3 +89,4 @@ end
 
 # end
 
+#
