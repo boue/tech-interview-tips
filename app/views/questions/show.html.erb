@@ -3,13 +3,11 @@
   <div class="small-12 large-12 columns panel">
   <%= render partial: "layouts/alerts" %>
 
-
+<!-- shows the options to save/thumbsup questions if you are signed in all disabled -->
     <% if current_user %>
 
-      <span data-tooltip class="has-tip" title="Give this question a thumbs-up."><%= link_to kudos_path(question_id: @question.id), class: "fa fa-thumbs-up", :remote => true, :id => "thumbs-up-link", method: :post do %>
-      <% end %>&nbsp;<span id="thumbs-up-count"><%= @question.kudos.count %></span></span>&nbsp;&nbsp;&nbsp;
-      <span data-tooltip class="has-tip" title="Save this question to your Interview Prep area."><%= link_to favorites_path(question_id: @question.id), class: "fa fa-floppy-o", :remote => true, :id => "save-link", method: :post do %>
-        <% end %>&nbsp;<span id="save-count"><%= @question.favorites.count %></span></span>&nbsp;&nbsp;&nbsp;
+    <%= render partial: "questions/logged" %>
+
 
     <% else %>
 
@@ -30,6 +28,7 @@
       <% end %>
     </p>
 
+<!-- able to edit and delete if you are the current_user -->
     <% if current_user %>
       <% if current_user.id == @question.user.id %>
       <p class="text-right"><%= link_to "edit", edit_question_path(@question), class: "button [tiny small large]" %>
@@ -37,6 +36,7 @@
       <% end %>
     <% end %>
 
+<!-- github information shows up whether you are logged in or not -->
     <div class="gravatar-body"><%= gravatar_for(@question.user) %></div>
     <% if @question.user.provider == "github" %>
       <p class="text-right">Posted by: <i class="fa fa-github-square"></i> <%= link_to @question.user.name, "https://github.com/#{@question.user.name}" %><br>
@@ -47,6 +47,7 @@
   </div>
 </div>
 
+<!-- log in to answer or render partial with choice to answer -->
 <div class="row">
   <div class="small-12 large-12 columns panel">
 <% if current_user %>
@@ -58,11 +59,12 @@
   </div>
 </div>
 
+<!-- display all the answers  -->
 <% @question.answers.each do |answer| %>
   <div class="row">
     <div class="small-12 large-12 columns panel clearfix">
 
-
+<!-- allows you to thumbs up if you are logged in -->
         <% if current_user %>
         <span id="<%= answer.id %>" data-tooltip class="has-tip" title="Give this answer a thumbs-up."><%= link_to kudos_path(question_id: @question.id, answer_id: answer.id), class: "fa fa-thumbs-up answer-thumbs-up", :remote => true, method: :post do %><% end %>&nbsp;<span class="answer-vote"><%= answer.kudos.count %></span></span>
         <% else %>
@@ -71,7 +73,7 @@
 
 
 
-
+<!-- if you are logged in and are the current user of the answer then delete edit answer available -->
       <p><%= markdown answer.content %></p>
       <hr>
       <% if current_user %>
@@ -96,3 +98,4 @@
 <% end %>
 
 <script src="/assets/question.js"></script>
+
