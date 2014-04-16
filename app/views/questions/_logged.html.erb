@@ -1,5 +1,16 @@
-<span data-tooltip class="has-tip" title="Give this question a thumbs-up."><%= link_to kudos_path(question_id: @question.id), class: "fa fa-thumbs-up", :remote => true, :id => "thumbs-up-link", method: :post do %>
-<% end %>&nbsp;<span id="thumbs-up-count"><%= @question.kudos.count %></span></span>&nbsp;&nbsp;&nbsp;
-<span data-tooltip class="has-tip" title="Save this question to your Interview Prep area."><%= link_to favorites_path(question_id: @question.id), class: "fa fa-floppy-o", :remote => true, :id => "save-link", method: :post do %>
-<% end %>&nbsp;<span id="save-count"><%= @question.favorites.count %></span></span>&nbsp;&nbsp;&nbsp;
+<% unless @question.kudos.find_by(user_id: current_user.id) %>
+  <span data-tooltip class="has-tip" title="Give this question a thumbs-up."><%= link_to kudos_path(question_id: @question.id), class: "fa fa-thumbs-up", :remote => true, :id => "thumbs-up-link", method: :post do %>
+  <% end %>
+<% else %>
+  <span data-tooltip class="has-tip" title="You have given this question a thumbs-up."><i class="fa fa-thumbs-up grey-out"></i>
+<% end %>
+&nbsp;<span id="thumbs-up-count"><%= @question.kudos.count %></span></span>&nbsp;&nbsp;&nbsp;
+
+<% unless @question.favorites.find_by(user_id: current_user.id) %>
+  <span data-tooltip class="has-tip" title="Save this question to your Interview Prep area."><%= link_to favorites_path(question_id: @question.id), class: "fa fa-floppy-o", :remote => true, :id => "save-link", method: :post do %>
+  <% end %>
+<% else %>
+  <span data-tooltip class="has-tip" title="You have saved this question to your Interview Prep area."><i class="fa fa-floppy-o grey-out"></i>
+<% end %>
+&nbsp;<span id="save-count"><%= @question.favorites.count %></span></span>&nbsp;&nbsp;&nbsp;
 

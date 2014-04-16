@@ -7,7 +7,7 @@
     <% else %>
       <%= render partial: "questions/notlogged" %>
     <% end %>
-    <span data-tooltip class="has-tip" title="Pageviews"><i class="fa fa-eye"></i>&nbsp;<%= @question.impressionist_count %></span><br><br>
+    <span data-tooltip class="has-tip" title="Total page views."><i class="fa fa-eye"></i>&nbsp;<%= @question.impressionist_count %></span><br><br>
 
     <h3><%= @question.title %>
       <%= render partial: "questions/share" %></h3>
@@ -42,22 +42,7 @@
 </div>
 
 <% @question.answers.each do |answer| %>
-  <div class="row">
-    <div class="small-12 large-12 columns panel clearfix">
-
-        <% if current_user %>
-        <span id="<%= answer.id %>" data-tooltip class="has-tip" title="Give this answer a thumbs-up."><%= link_to kudos_path(question_id: @question.id, answer_id: answer.id), class: "fa fa-thumbs-up answer-thumbs-up", :remote => true, method: :post do %><% end %>&nbsp;<span class="answer-vote"><%= answer.kudos.count %></span></span>
-        <% else %>
-          <span data-tooltip class="has-tip" title="Sign-in to give this question a thumbs-up."><i class="fa fa-thumbs-up grey-out"></i>&nbsp;<%= answer.kudos.count %></span>
-        <% end %>
-
-    <%= render partial: "answers/show", locals: { answer: answer } %>
-      <% if current_user %>
-    <%= render partial: "comments/new", locals: { question: @question, answer: answer } %>
-      <% end %>
-    <%= render partial: "comments/show", locals: { answer: answer } %>
-    </div>
-  </div>
+  <%= render partial: "answers/show", locals: { answer: answer } %>
 <% end %>
 
 <script src="/assets/question.js"></script>

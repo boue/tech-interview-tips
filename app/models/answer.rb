@@ -17,7 +17,7 @@ class Answer < ActiveRecord::Base
     Action.create(
       actionable: self,
       content: self.content,
-      user: User.find(Question.find(self.question_id).user_id)
+      user: User.find(self.user_id)
     )
   end
 
