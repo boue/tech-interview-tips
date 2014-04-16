@@ -88,6 +88,12 @@ html #tag_cloud {
   .l { font-size: 1.8em; }
 }
 
+html .add-bottom-padding {
+  padding-bottom: 30px;
+  margin-bottom: 10px;
+  padding-top: 20px;
+}
+
 /* max-width 640px, mobile-only styles */
 @media only screen and (max-width: 40em) { 
   .img-container {
