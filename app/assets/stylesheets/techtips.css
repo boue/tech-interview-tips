@@ -1,5 +1,5 @@
 @import url(http://fonts.googleapis.com/css?family=Candal);
-.headline { 
+.headline {
   font-family: ‘Candal’, sans-serif;
   font-weight: 400;
 }
@@ -95,7 +95,7 @@ html .add-bottom-padding {
 }
 
 /* max-width 640px, mobile-only styles */
-@media only screen and (max-width: 40em) { 
+@media only screen and (max-width: 40em) {
   .img-container {
     height: 100%;
     margin: 0 auto;
@@ -105,10 +105,10 @@ html .add-bottom-padding {
     -o-background-size: cover;
     background-size: cover;
   }
-} 
+}
 
 /* min-width 641px, medium screens */
-@media only screen and (min-width: 40.063em) { 
+@media only screen and (min-width: 40.063em) {
   .img-container {
     height: 100%;
     margin: 0 auto;
@@ -118,4 +118,4 @@ html .add-bottom-padding {
     -o-background-size: cover;
     background-size: cover;
   }
-} 
+}
