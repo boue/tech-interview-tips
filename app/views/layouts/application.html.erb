@@ -45,7 +45,8 @@
             <a href="#">Categories</a>
             <ul class="dropdown">
               <li><%= link_to "All Questions", questions_path %></li>
-              <li><a href="http://www.techinterview.tips/questions?answered=false">Unanswered Questions</a></li>
+              <li><%= link_to "Unanswered Questions", questions_path(unanswered: true) %>
+              </li>
               <li><a href="http://www.techinterview.tips/tags/Ruby">Ruby</a></li>
               <li><a href="http://www.techinterview.tips/tags/Javascript">Javascript</a></li>
               <li><a href="http://www.techinterview.tips/tags/logic">Logic</a></li>
