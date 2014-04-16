@@ -1,0 +1,11 @@
+require 'spec_helper'
+
+describe CommentsController do
+  context "show" do
+    it "is successfull" do
+
+    end
+  end
+
+end
+
