@@ -4,6 +4,14 @@ class Kudo < ActiveRecord::Base
   has_many :actions, as: :actionable, dependent: :destroy
   after_create :create_action
 
+  def self.assign(data, user, kudo)
+    unless data.kudos.find_by(user_id: user.id)
+      kudo.user_id = user.id
+      data.kudos << kudo
+      kudo.save
+    end
+  end
+
   private
 
   def create_action
@@ -13,4 +21,5 @@ class Kudo < ActiveRecord::Base
       user: User.find(self.user_id)
     )
   end
+
 end
