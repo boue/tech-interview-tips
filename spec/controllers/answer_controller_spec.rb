@@ -32,12 +32,11 @@ describe AnswersController do
   end
 
   context "#destroy" do
-    let(:answer) { FactoryGirl.create :answer }
-    let(:answer2) { FactoryGirl.create :answer }
-    xit "deletes an answer" do
+    let!(:answer) { FactoryGirl.create :answer }
+    it "deletes an answer" do
       expect {
         delete :destroy, id: answer.id
-      }.to change{Answer.count}.by(1)
+      }.to change(Answer, :count).by(-1)
     end
   end
 end
