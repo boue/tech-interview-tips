@@ -4,16 +4,30 @@ class QuestionsController < ApplicationController
   before_action :check_current_user, only: [:new, :edit, :update, :destroy ]
   impressionist actions: [:show]
 
+# When I search for 'ruby' then I expect to see questions with the text 'ruby'
+# in order of most answered.
+
+# When I search for tag of 'ruby' then I expect to see questions with the 
+# tag of ruby in order of most answered.
+
+# When I go to 'questions/answered=false' then I expect to see questions that
+# don't have answers
+
+# when I go to all questions '/questions' I expect to see all questions with
+# answers
+
   def index 
     if params[:tag]
-      @questions = Question.all
+      @questions = Question.most_answered
       @questions = @questions.tagged_with(params[:tag])
       @questions = @questions.paginate(:page => params[:page], :per_page => 10)
     elsif params[:search]  
-      @questions = Question.paginate(:page => params[:page], :per_page => 10)
+      @questions = Question.most_answered.paginate(:page => params[:page], :per_page => 10)
       @questions = @questions.search(params[:search])
+    elsif params[:unanswered]
+      @questions = Question.unanswered.paginate(:page => params[:page], :per_page => 10)
     else
-      @questions = Question.all
+      @questions = Question.most_answered
       @questions = @questions.paginate(:page => params[:page], :per_page => 10)
     end
   end
@@ -26,13 +40,14 @@ class QuestionsController < ApplicationController
     @question = Question.new
   end
 
-  def create
+  def create 
     @user = User.find(current_user.id)
     @question = Question.new(question_params)
     @user.questions << @question
     if @question.save
       redirect_to question_path(@question)
     else
+      # require "pry"; binding.pry
       render :new
     end
   end

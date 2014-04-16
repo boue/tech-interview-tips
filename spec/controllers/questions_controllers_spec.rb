@@ -44,7 +44,8 @@ describe QuestionsController do
       }.to change{Question.count}.by(1)
     end
 
-    xit "if given invalid parameters, it renders new view" do
+    it "if given invalid parameters, it renders new view" do
+      get :new
       expect {
         post :create, :question => {}
           # , question: {:title => new_title , :content => nil} )
@@ -60,3 +61,4 @@ describe QuestionsController do
   end
 
 end
+

@@ -2,10 +2,12 @@ class CommentsController < ApplicationController
 
   def show
     @comment = Comment.find params[:id]
+    render json: { comment: @comment }.to_json
   end
 
   def new
     @comment = Comment.new
+    render json: { comment: @comment }.to_json
   end
 
   def create

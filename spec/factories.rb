@@ -1,7 +1,6 @@
 FactoryGirl.define do
   factory :question do
     title { Faker::Lorem.word }
-    content { Faker::Lorem.sentence }
     user { FactoryGirl.create(:user) }
   end
 
@@ -21,6 +20,7 @@ FactoryGirl.define do
   factory :comment do
     content { Faker::Lorem.sentence }
     user { FactoryGirl.create(:user) }
+    association :commentable, factory: :question
   end
 
   factory :favorite do

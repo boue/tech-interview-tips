@@ -21,10 +21,14 @@
 
 
     <h3><%= @question.title %>
-    <small><%= render partial: "questions/share" %></small></h3>
+    <%= render partial: "questions/share" %></h3>
     <hr>
 
- 
+    <p class="text-left">
+      <% unless @question.tag_list.count < 1 %>
+        <span class="label"><%= raw @question.tag_list.map { |t| link_to t, tag_path(t) }.join('</span> <span class="label">') %></span>
+      <% end %>
+    </p>
 
     <% if current_user %>
       <% if current_user.id == @question.user.id %>
