@@ -29,6 +29,14 @@ describe AnswersController do
           )
       }.to change{Answer.count}.by(1)
     end
+
+    it "creates a new action as a result of creating a new answer" do
+      expect {
+        AnswersController.any_instance.stub(:current_user).and_return(@user)
+        post(:create, answer: { content: "Test answer", question_id: @question.id.to_s }
+          )
+        }.to change{ Action.count }.by(1)
+    end
   end
 
   context "#destroy" do

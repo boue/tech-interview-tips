@@ -50,8 +50,15 @@ describe QuestionsController do
         post :create, :question => {}
           # , question: {:title => new_title , :content => nil} )
       }.to render_template :new
-      end
     end
+
+    it "creates a new action as a result of creating a new question" do
+      expect {
+        post(:create, question: FactoryGirl.attributes_for(:question))
+        }.to change{ Action.count }.by(1)
+    end
+
+  end
 
 end
 
