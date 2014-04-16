@@ -1,4 +1,5 @@
-class Question < ActiveRecord::Base
+  class Question < ActiveRecord::Base
+  include CreateAction
   has_many :answers, dependent: :destroy
   has_many :favorites, as: :favoritable, dependent: :destroy
   has_many :kudos, as: :kudosible, dependent: :destroy
@@ -39,11 +40,4 @@ class Question < ActiveRecord::Base
     end
   end
 
-  def create_action
-    Action.create(
-      actionable: self,
-      content: self.title,
-      user: User.find(self.user_id)
-    )
-  end
 end
