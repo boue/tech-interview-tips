@@ -17,4 +17,5 @@ class KudosController < ApplicationController
       redirect_to root_path, flash: { notice: "Kudos create was unsuccessful" }
     end
   end
+
 end
