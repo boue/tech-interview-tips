@@ -3,7 +3,7 @@
 
       <% if current_user %>
         <% unless answer.kudos.find_by(user_id: current_user.id) %>
-          <span id="<%= answer.id %>" data-tooltip class="has-tip" title="Give this answer a thumbs-up."><%= link_to kudos_path(question_id: @question.id, answer_id: answer.id), class: "fa fa-thumbs-up answer-thumbs-up", :remote => true, method: :post do %><% end %>
+          <span id="<%= answer.id %>" data-tooltip class="has-tip" title="Give this answer a thumbs-up."><%= link_to kudos_path(kudosible_id: answer.id, kudosible_type: "answer"), class: "fa fa-thumbs-up answer-thumbs-up", :remote => true, method: :post do %><% end %>
         <% else %>
           <span data-tooltip class="has-tip" title="You have given this answer a thumbs-up."><i class="fa fa-thumbs-up grey-out"></i>
         <% end %>
