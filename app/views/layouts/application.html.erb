@@ -32,17 +32,14 @@
           <li class="has-form">
             <div class="row collapse">
               <form action="/questions" method="get">
-                <div class="large-8 small-9 columns" style="padding-right: 1px">
+                <div class="large-8 small-9 columns" style="padding-right: 0px">
                   <%= text_field_tag :search, params[:search], placeholder: "Find Questions" %>
                 </div>
-                <div class="large-4 small-3 columns" style="padding-left: 5px">
+                <div class="large-4 small-3 columns" style="padding-left: 0px">
                   <%= submit_tag "Search", :name => nil, class: "alert button expand" %>
                 </div>
               </form>
             </div>
-
-<!-- test  "margin-right:0;"  35
- style="margin-left:0;"  38-->
 
           </li>
           <li class="has-dropdown">
@@ -63,8 +60,6 @@
               <li><%= link_to "Users", users_path %></li>
             </ul>
           </li>
-
-
         </ul>
 
         <!-- Right Nav Section -->
