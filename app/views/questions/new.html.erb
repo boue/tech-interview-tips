@@ -5,12 +5,12 @@
      <%= form_for @question do |f| %>
      <div class="row">
        <div class="small-12 large-12 columns">
-          <%= f.text_area :title, placeholder: "Question ...", size: "60x12" %>
+          <%= f.text_area :title, placeholder: "Question ... (Markdown with fenced code blocks supported)", size: "60x12" %>
         </div>
       </div>
      <div class="row">
        <div class="small-12 large-12 columns">
-        <%= f.text_field :tag_list, placeholder: "Tags (separated by commas)" %>
+        <%= f.text_field :tag_list, placeholder: "Tags (separated by commas) ... code language, company that asked it, type of question" %>
       </div>
     </div>
       <div class="row">

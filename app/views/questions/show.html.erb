@@ -9,7 +9,7 @@
     <% end %>
     <span data-tooltip class="has-tip" title="Total page views."><i class="fa fa-eye"></i>&nbsp;<%= @question.impressionist_count %></span><br><br>
 
-    <h3><%= @question.title %>
+    <h3><%= markdown @question.title %>
       <%= render partial: "questions/share" %></h3>
     <hr>
 
