@@ -37,10 +37,10 @@
   <% end %>
       <%= time_ago_in_words(answer.created_at) %> ago</p>
 
-    <% if current_user %>
+<!--     <% if current_user %>
   <%= render partial: "comments/new", locals: { question: @question, answer: answer } %>
     <% end %>
-  <%= render partial: "comments/show", locals: { answer: answer } %>
+  <%= render partial: "comments/show", locals: { answer: answer } %> -->
   </div>
 </div>
 
