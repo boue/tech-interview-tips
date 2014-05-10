@@ -16,9 +16,18 @@
 <hr>
 <% if current_user %>
   <% if current_user.id == answer.user_id %>
-      <p class="text-right"><%= link_to "delete", answer_path(answer), method: :delete, class: "button [tiny small large]" %><p>
+      <p class="text-right">
+        <%= link_to "Delete", answer_path(answer), method: :delete, class: "button [tiny small large]" %>
+        <a href="#" data-reveal-id="editModal<%= answer.id %>" class="button [tiny small large]">Edit</a>
+      </p>
   <% end %>
 <% end %>
+
+<div id="editModal<%= answer.id %>" class="reveal-modal small" data-reveal>
+  <h3>Edit Answer</h3>
+  <%= render partial: "answers/edit", locals: { answer: answer } %>
+  <a class="close-reveal-modal">&#215;</a>
+</div>
 
 <div class="gravatar-body"><%= gravatar_for(answer.user) %></div>
   <% if answer.user.provider == "github" %>

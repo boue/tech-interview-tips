@@ -1,6 +1,0 @@
-<%= form_for @answer do |f| %>
-  <%= f.label :content %>
-  <%= f.text_area :content, size: "40x12" %>
-  <%= f.hidden_field :question_id, value: @answer.question_id %>
-  <%= f.submit %>
-<% end %>
