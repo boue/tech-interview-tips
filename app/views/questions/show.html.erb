@@ -1,4 +1,9 @@
 <% content_for :title do %><%= @question.title %><% end %>
+<% if current_user %>
+  <div class="alert-box info" id="flash_notice"><a href="#" data-reveal-id="answerModal">Answer this question</a></div>
+<% else %>
+  <div class="alert-box info" id="flash_notice">Please sign in with your <%= link_to "GitHub", "/auth/github" %> or <%= link_to "LinkedIn", "/auth/linkedin" %> profile if you'd like to submit an answer for this question.</div>
+<% end %>
 <div class="row">
   <div class="small-12 large-12 columns panel">
   <%= render partial: "layouts/alerts" %>
@@ -27,16 +32,6 @@
     <% end %>
 
      <%= render partial: "questions/gravatar", locals: { question: @question } %>
-  </div>
-</div>
-
-<div class="row">
-  <div class="small-12 large-12 columns">
-    <% if current_user %>
-      <a href="#" data-reveal-id="answerModal" class="button [tiny small large]">Answer Question</a>
-    <% else %>
-      <h3>Please log in to answer!</h3>
-    <% end %>
   </div>
 </div>
 
