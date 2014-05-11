@@ -19,7 +19,8 @@
 
   scope :most_answered, -> {
     select("questions.id, title, slug, count(answers.id) AS answers_count").
-    joins(:answers).
+    # joins('LEFT OUTER JOIN addresses ON addresses.client_id = clients.id')
+    joins('FULL OUTER JOIN answers ON answers.question_id = questions.id').
     group("questions.id").
     order("answers_count DESC")
 }
