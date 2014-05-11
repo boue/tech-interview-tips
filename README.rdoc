@@ -1,26 +1,30 @@
 == Technical Interview Tips
 
-=== Setup:
+This website was originally created as our Dev Bootcamp final project.
+
+=== Original Team Members:
+- Jackie Johnston
+- Drew Parker
+- Germain Boue
+- Mason O'Neal
+
+=== Open Source
+It is now an Open Source project. To contribute to this project, just add your issue or pull request.
+Please see this guide on best practices to contributing to Open Source projects for details:
+https://guides.github.com/activities/contributing-to-open-source/
+
+The live site is deployed to Heroku at:
+http://www.techinterview.tips
+
+=== Setup
 - Ruby version: 1.9.3
 - Rails version: 4.0.3
 - Add config/database.yml file for postgres
 - Add these to your ~.bash_profile file:
-     export GITHUB_KEY="Shhhhh...Secret"
-     export GITHUB_SECRET="Shhhhh...Secret"
+     export GITHUB_KEY="Use your own"
+     export GITHUB_SECRET="Use your own"
+     export LINKEDIN_KEY="Use your own"
+     export LINKEDIN_SECRET="Use your own"
 - Run:
-    $bundle
-    $rake db:setup
-
-We are located on Heroku at:
-
-http://www.techinterview.tips/
-
-We are located on Trello at:
-
-https://trello.com/b/OyaXdgnX/www-techinterview-tips
-
-=== Team Members:
-- Jackie Johnston
-- Drew Parker
-- Germain Boue
-- Mason O'neal
+     $ bundle
+     $ rake db:setup
