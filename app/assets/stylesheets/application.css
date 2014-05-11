@@ -11,7 +11,7 @@
  *= require_self
  *= require foundation_and_overrides
  *= require_tree .
- *= require solarized
+ *= require monokai
  *= require code_line_numbering
  *= require techtips.css
  */
