@@ -1,3 +1,6 @@
 <% flash.each do |name, msg| %>
-  <%= content_tag :div, msg, id: "flash_#{name}", class: "alert-box info" %>
+  <div data-alert class="alert-box <%= name.to_s %>">
+    <%= msg %>
+    <a href="" class="close">×</a>
+  </div>
 <% end %>

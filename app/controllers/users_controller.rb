@@ -13,7 +13,7 @@ class UsersController < ApplicationController
 
   def check_current_user
     unless current_user == User.find(params[:id])
-      redirect_to root_url, flash: { notice: "Please sign in to view your Interview Prep area" }
+      redirect_to root_url, flash: { warning: "Please sign in to view your Interview Prep area" }
     end
   end
 end

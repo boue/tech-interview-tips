@@ -1,8 +1,10 @@
 <% content_for :title do %><%= @question.title %><% end %>
 <% if current_user %>
-  <div class="alert-box info" id="flash_notice"><a href="#" data-reveal-id="answerModal">Answer this question</a></div>
+  <div class="alert-box info" id="flash_notice"><a href="#" data-reveal-id="answerModal">Click here</a> if you'd like to answer this question.
+  <a href="" class="close">×</a></div>
 <% else %>
-  <div class="alert-box info" id="flash_notice">Please sign in with your <%= link_to "GitHub", "/auth/github" %> or <%= link_to "LinkedIn", "/auth/linkedin" %> profile if you'd like to submit an answer for this question.</div>
+  <div class="alert-box info" id="flash_notice">Please sign in with your <%= link_to "GitHub", "/auth/github" %> or <%= link_to "LinkedIn", "/auth/linkedin" %> profile if you'd like to answer this question.
+  <a href="" class="close">×</a></div>
 <% end %>
 <div class="row">
   <div class="small-12 large-12 columns panel">
