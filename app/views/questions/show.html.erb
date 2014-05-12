@@ -14,10 +14,10 @@
     <% else %>
       <%= render partial: "questions/notlogged" %>
     <% end %>
-    <span data-tooltip class="has-tip" title="Total page views."><i class="fa fa-eye"></i>&nbsp;<%= @question.impressionist_count %></span><br><br>
+    <span data-tooltip class="has-tip" title="Total page views."><i class="fa fa-eye"></i>&nbsp;<%= @question.impressionist_count %></span>
+    <%= render partial: "questions/share" %><br><br>
 
-    <h3><%= markdown @question.title %>
-      <%= render partial: "questions/share" %></h3>
+    <h3><%= markdown @question.title %></h3>
     <hr>
 
     <p class="text-left">

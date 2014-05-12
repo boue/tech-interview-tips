@@ -1,7 +1,7 @@
-<%= link_to "http://twitter.com/home?status=#{request.original_url}" do %>
+&nbsp;&nbsp;&nbsp;<span data-tooltip class="has-tip" title="Share this question on Twitter."><%= link_to "http://twitter.com/home?status=#{request.original_url}" do %>
   <i class="fa fa-twitter"></i>
-<% end %>
-
-<%= link_to "http://www.linkedin.com/shareArticle?mini=true&url=#{request.original_url}&title=#{@question.title}" do %>
+  <% end %></span>
+&nbsp;&nbsp;&nbsp;
+<span data-tooltip class="has-tip" title="Share this question on LinkedIn."><%= link_to "http://www.linkedin.com/shareArticle?mini=true&url=#{request.original_url}&title=#{@question.title}" do %>
   <i class="fa fa-linkedin-square"></i>
-<% end %>
+  <% end %></span>
