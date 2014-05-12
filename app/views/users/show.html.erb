@@ -7,25 +7,27 @@
     <p>Click the <i class="fa fa-floppy-o"></i> icon on the question's page so that a link will appear here for future reference.<br>
     Click a <i class="fa fa-minus-circle"></i> icon in the list below to remove a question from your Interview Prep area.</p>
     <% if current_user.id == @user.id %>
-      <% @user.favorites.each do |favorite| %>
-      <br>
-      <span data-tooltip class="has-tip" title="Click to remove from list"><%= link_to favorite_path(question_id: favorite.favoritable.id, favorite_id: favorite.id), class: "fa fa-minus-circle", :id => "erase-link", method: :delete do %>
-        <% end %></span>&nbsp;&nbsp;
-      <span data-tooltip class="has-tip" title="Click to view question page"><%= link_to favorite.favoritable.title, question_path(favorite.favoritable) %></span><br>
-      <% end %>
+      <ul class="fa-ul">
+        <% @user.favorites.each do |favorite| %>
+          <li>
+          <span data-tooltip class="has-tip" title="Click to remove from list"><%= link_to favorite_path(question_id: favorite.favoritable.id, favorite_id: favorite.id), class: "fa-li fa fa-minus-circle", :id => "erase-link", method: :delete do %><% end %></span>
+          <%= link_to favorite.favoritable.title, question_path(favorite.favoritable) %>
+          </li>
+        <% end %>
+      </ul>
     <% end %>
   </div>
   <div class="large-4 columns">
     <h3>Questions Asked</h3>
       <ul class="fa-ul">
         <% @questions.each do |question| %>
-        <li><i class="fa-li fa fa-question-circle"></i><%= link_to question.title, question_path %></li>
+        <li><i class="fa-li fa fa-question-circle"></i><%= link_to question.title, question_path(question) %></li>
         <% end %>
       </ul>
     <h3>Questions Answered</h3>
     <ul class="fa-ul">
       <% @answered_questions.each do |question| %>
-      <li><i class="fa-li fa fa-check-circle"></i><%= link_to question.title, question_path %></li>
+      <li><i class="fa-li fa fa-check-circle"></i><%= link_to question.title, question_path(question) %></li>
       <% end %>
     </ul>
   </div>
