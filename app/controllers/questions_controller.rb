@@ -91,7 +91,7 @@ class QuestionsController < ApplicationController
 
     def check_current_user
       unless current_user
-        redirect_to root_url, flash: { notice: "Please sign in first" }
+        redirect_to root_url, flash: { alert: "Please sign in first" }
       end
     end
 end
