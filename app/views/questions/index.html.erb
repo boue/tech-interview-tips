@@ -7,7 +7,7 @@
         <%= link_to tag.name, tag_path(tag.name), class: css_class %>
       <% end %>
     </p>
-   <%= link_to "Post a Question", new_question_path, class: "button [tiny small large]" %>
+   <%= link_to "Post a Question", new_question_path, class: "button small alert" %>
     <% @questions.each do |question| %>
       <hr>
       <h4><%= link_to question.title, question_path(question) %></h4>
@@ -16,6 +16,7 @@
         <span class="label"><%= raw question.tag_list.map { |t| link_to t, tag_path(t) }.join('</span> <span class="label">') %></span>
       <% end %>
     <% end %>
+    <hr>
     <%= will_paginate @questions, renderer: FoundationPagination::Rails %>
   </div>
 </div>

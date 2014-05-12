@@ -7,6 +7,9 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find params[:id]
+    @questions = @user.questions
+    #Client.joins(:orders).where('orders.created_at' => time_range)
+    @answered_questions = Question.joins(:answers).where('answers.user_id' => @user.id)
   end
 
   private
