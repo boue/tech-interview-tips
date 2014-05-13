@@ -1,6 +1,6 @@
-.highlight         { background-color: #333333; opacity: 0.9 }
+.highlight         { background-color: #333333; opacity: 0.8 }
 .highlight .c                 { color: #75715e }                            /* Comment                     */
-.highlight .err               { color: #960050; background-color: #333333 } /* Error                       */
+.highlight .err               { color: #960050 }                            /* Error                       */
 .highlight .k                 { color: #66d9ef }                            /* Keyword                     */
 .highlight .l                 { color: #ae81ff }                            /* Literal                     */
 .highlight .n                 { color: #f8f8f2 }                            /* Name                        */
